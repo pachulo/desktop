@@ -42,9 +42,9 @@ parts:
       - -DCMAKE_INSTALL_LIBDIR=/usr/lib
       - -DSYSCONF_INSTALL_DIR=/etc
         #install: |
-    override-build:
+        #    override-build:
       # Replace icon with the correct path in the snap
-      sed -ri "s|(^Icon=).*$|\1\${SNAP}/meta/gui/icon.svg|" "$SNAPCRAFT_PART_INSTALL/usr/share/applications/nextcloud.desktop"
+      #sed -ri "s|(^Icon=).*$|\1\${SNAP}/meta/gui/icon.svg|" "$SNAPCRAFT_PART_INSTALL/usr/share/applications/nextcloud.desktop"
 
     after:
       - desktop-qt5
