@@ -29,7 +29,7 @@ parts:
       - libqt5svg5-dev
       - cmake
     stage-packages:
-      - sqllite3
+      - sqlite3
       # qtkeychain requires these libs at runtime to support keyrings
       - libsecret-1-0
       - libgnome-keyring0
