@@ -20,12 +20,12 @@ parts:
       - g++
       - libsqlite3-dev
       - libssl-dev
+      - libqt5webkit5-dev
       - pkg-config
       - qt5keychain-dev
       - qttools5-dev-tools
       - libzip-dev
       - qtdeclarative5-dev
-      - libqt5webengine5-dev
       - libqt5svg5-dev
       - cmake
     stage-packages:
