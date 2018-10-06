@@ -15,21 +15,26 @@ parts:
     plugin: cmake
     source: .
     source-type: git
-    source-subdir: client
+    #source-subdir: client
     build-packages:
       - g++
-      - libqt5webkit5-dev
       - libsqlite3-dev
       - libssl-dev
       - pkg-config
       - qt5keychain-dev
       - qttools5-dev-tools
+      - libzip-dev
+      - qtdeclarative5-dev
+      - libqt5webengine5-dev
+      - libsqlite3-dev
+      - libqt5svg5-dev
     stage-packages:
+      - sqllite3
       # qtkeychain requires these libs at runtime to support keyrings
       - libsecret-1-0
       - libgnome-keyring0
     configflags:
-      - -GVisual\ Studio\ 15\ 2017\ Win64
+      - "-GVisual Studio 15 2017 Win64"
       - -DNO_SHIBBOLETH=1
       - -DCMAKE_BUILD_TYPE=Release
       - -DOEM_THEME_DIR=$SNAPCRAFT_PART_INSTALL/../src/nextcloudtheme
