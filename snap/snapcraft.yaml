@@ -26,8 +26,8 @@ parts:
       - libzip-dev
       - qtdeclarative5-dev
       - libqt5webengine5-dev
-      - libsqlite3-dev
       - libqt5svg5-dev
+      - cmake
     stage-packages:
       - sqllite3
       # qtkeychain requires these libs at runtime to support keyrings
@@ -41,7 +41,8 @@ parts:
         #- -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_INSTALL_LIBDIR=/usr/lib
       - -DSYSCONF_INSTALL_DIR=/etc
-    install: |
+        #install: |
+    override-build:
       # Replace icon with the correct path in the snap
       sed -ri "s|(^Icon=).*$|\1\${SNAP}/meta/gui/icon.svg|" "$SNAPCRAFT_PART_INSTALL/usr/share/applications/nextcloud.desktop"
 
