@@ -57,7 +57,7 @@ apps:
     command: snapcraft-preload nextcloud
     environment:
       LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
-    desktop: usr/share/applications/nextcloud.desktop
+      #desktop: usr/share/applications/nextcloud.desktop
     plugs:
       - unity7
       - home
