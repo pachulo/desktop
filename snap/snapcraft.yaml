@@ -34,7 +34,6 @@ parts:
       - libsecret-1-0
       - libgnome-keyring0
     configflags:
-      - "-GVisual Studio 15 2017 Win64"
       - -DNO_SHIBBOLETH=1
       - -DCMAKE_BUILD_TYPE=Release
       - -DOEM_THEME_DIR=$SNAPCRAFT_PART_INSTALL/../src/nextcloudtheme
