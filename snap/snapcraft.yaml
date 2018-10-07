@@ -27,9 +27,10 @@ parts:
       - libzip-dev
       - qtdeclarative5-dev
       - libqt5svg5-dev
-      - cmake
+      - libqt5webenginewidgets5
     stage-packages:
       - sqlite3
+      - libqt5webenginewidgets5
       # qtkeychain requires these libs at runtime to support keyrings
       - libsecret-1-0
       - libgnome-keyring0
