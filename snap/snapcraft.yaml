@@ -49,15 +49,6 @@ parts:
       - desktop-qt5
       - snapcraft-preload
 
-  xdg-open:
-    source: https://github.com/ubuntu-core/snapd-xdg-open.git
-    source-depth: 1
-    plugin: dump
-    organize:
-      data/xdg-open: bin/xdg-open
-    prime:
-      - bin
-
 apps:
   nextcloud-client:
     aliases:
