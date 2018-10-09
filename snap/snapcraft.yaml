@@ -15,6 +15,7 @@ parts:
     plugin: cmake
     source: .
     source-type: git
+    source-tag: v2.5.0-beta2
     #source-subdir: client
     build-packages:
       - g++
@@ -65,6 +66,11 @@ apps:
       - network-bind
       - network-manager
       - password-manager-service
+      - desktop
+      - wayland
+      - desktop-legacy
+      - opengl
+      - x11
 
   cmd:
     aliases:
