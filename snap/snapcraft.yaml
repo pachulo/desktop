@@ -1,5 +1,5 @@
 name: nextcloud-client
-version: master-branch
+version: 2.5.0-beta2
 icon: theme/colored/Nextcloud-icon.svg
 summary: Nextcloud Desktop Client
 description: |
@@ -38,7 +38,7 @@ parts:
       - -DNO_SHIBBOLETH=1
       - -DCMAKE_BUILD_TYPE=Release
       - -DOEM_THEME_DIR=$SNAPCRAFT_PART_INSTALL/../src/nextcloudtheme
-        #- -DCMAKE_INSTALL_PREFIX=/usr
+      - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_INSTALL_LIBDIR=/usr/lib
       - -DSYSCONF_INSTALL_DIR=/etc
         #install: |
