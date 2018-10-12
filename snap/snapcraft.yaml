@@ -48,14 +48,14 @@ parts:
 
     after:
       - desktop-qt5
-      - snapcraft-preload
+      #- snapcraft-preload
 
 apps:
   nextcloud-client:
     aliases:
       - nextcloud
 
-    command: snapcraft-preload nextcloud
+    command: desktop-launch nextcloud
     environment:
       LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
       #desktop: usr/share/applications/nextcloud.desktop
@@ -75,7 +75,7 @@ apps:
   cmd:
     aliases:
       - nextcloudcmd
-    command: snapcraft-preload nextcloudcmd
+    command: nextcloudcmd
     environment:
       LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
     plugs:
