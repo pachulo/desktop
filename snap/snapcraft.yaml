@@ -73,6 +73,7 @@ apps:
       - desktop-legacy
       - opengl
       - x11
+      - system-observe
 
   cmd:
     aliases:
