@@ -79,7 +79,7 @@ apps:
     aliases:
       - nextcloudcmd
     command: nextcloudcmd
-    environment:
+    #environment:
         #LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
     plugs:
       - unity7
