@@ -37,11 +37,11 @@ parts:
       - libgnome-keyring0
     configflags:
       - -DNO_SHIBBOLETH=1
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DOEM_THEME_DIR=$SNAPCRAFT_PART_INSTALL/../src/nextcloudtheme
-      - -DCMAKE_INSTALL_PREFIX=/usr
-      - -DCMAKE_INSTALL_LIBDIR=/usr/lib
-      - -DSYSCONF_INSTALL_DIR=/etc
+      - -DCMAKE_BUILD_TYPE=Debug
+        #- -DOEM_THEME_DIR=$SNAPCRAFT_PART_INSTALL/../src/nextcloudtheme
+        #- -DCMAKE_INSTALL_PREFIX=/usr
+        #- -DCMAKE_INSTALL_LIBDIR=/usr/lib
+        #- -DSYSCONF_INSTALL_DIR=/etc
         #install: |
         #    override-build:
       # Replace icon with the correct path in the snap
@@ -58,7 +58,7 @@ apps:
 
     command: desktop-launch nextcloud
     environment:
-      LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
+      # LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
       #desktop: usr/share/applications/nextcloud.desktop
       DISABLE_WAYLAND: 1
     plugs:
@@ -80,7 +80,7 @@ apps:
       - nextcloudcmd
     command: nextcloudcmd
     environment:
-      LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
+        #LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
     plugs:
       - unity7
       - home
