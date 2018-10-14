@@ -58,7 +58,7 @@ apps:
 
     command: desktop-launch nextcloud
     environment:
-      # LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
+      LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
       #desktop: usr/share/applications/nextcloud.desktop
       DISABLE_WAYLAND: 1
     plugs:
@@ -79,8 +79,8 @@ apps:
     aliases:
       - nextcloudcmd
     command: nextcloudcmd
-    #environment:
-        #LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
+    environment:
+        LD_LIBRARY_PATH: $SNAP/usr/lib/nextcloud:$LD_LIBRARY_PATH
     plugs:
       - unity7
       - home
