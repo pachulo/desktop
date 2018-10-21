@@ -43,7 +43,7 @@ parts:
       - -DCMAKE_BUILD_TYPE=Debug
         #- -DOEM_THEME_DIR=$SNAPCRAFT_PART_INSTALL/../src/nextcloudtheme
         #- -DCMAKE_INSTALL_PREFIX=/usr
-      - -DCMAKE_INSTALL_LIBDIR=/
+      - -DCMAKE_INSTALL_LIBDIR=/usr
         #- -DSYSCONF_INSTALL_DIR=/etc
         #install: |
         #    override-build:
