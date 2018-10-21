@@ -29,9 +29,12 @@ parts:
       - qtdeclarative5-dev
       - libqt5svg5-dev
       - qtwebengine5-dev
+      - qttools5-dev
+      - extra-cmake-modules
     stage-packages:
       - sqlite3
       - qtwayland5
+      - libqt5xml5
       # qtkeychain requires these libs at runtime to support keyrings
       - libsecret-1-0
       - libgnome-keyring0
@@ -39,8 +42,8 @@ parts:
       - -DNO_SHIBBOLETH=1
       - -DCMAKE_BUILD_TYPE=Debug
         #- -DOEM_THEME_DIR=$SNAPCRAFT_PART_INSTALL/../src/nextcloudtheme
-      - -DCMAKE_INSTALL_PREFIX=/usr
-      - -DCMAKE_INSTALL_LIBDIR=/usr/lib
+        #- -DCMAKE_INSTALL_PREFIX=/usr
+        #- -DCMAKE_INSTALL_LIBDIR=/usr/lib
         #- -DSYSCONF_INSTALL_DIR=/etc
         #install: |
         #    override-build:
