@@ -15,7 +15,7 @@ parts:
     plugin: cmake
     source: .
     source-type: git
-    source-tag: v2.5.0-rc1
+    #source-tag: v2.5.0-rc1
     #source-subdir: client
     build-packages:
       - g++
