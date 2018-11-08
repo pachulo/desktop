@@ -52,7 +52,7 @@ AccountManager *AccountManager::instance()
 bool AccountManager::restore()
 {
     auto settings = ConfigFile::settingsWithGroup(QLatin1String(accountsC));
-    if (settings->status() != QSettings::NoError) {
+    if (settings->status() != QSettings::NoError || !settings->isWritable()) {
         qCWarning(lcAccountManager) << "Could not read settings from" << settings->fileName()
                                     << settings->status();
         return false;
@@ -251,6 +251,20 @@ AccountPtr AccountManager::loadAccountHelper(QSettings &settings)
         authType = forceAuth;
     } else {
         acc->setUrl(urlConfig.toUrl());
+    }
+
+    // Migrate to webflow
+    if (authType == QLatin1String("http")) {
+        authType = "webflow";
+        settings.setValue(QLatin1String(authTypeC), authType);
+
+        foreach(QString key, settings.childKeys()) {
+            if (!key.startsWith("http_"))
+                continue;
+            auto newkey = QString::fromLatin1("webflow_").append(key.mid(5));
+            settings.setValue(newkey, settings.value((key)));
+            settings.remove(key);
+        }
     }
 
     qCInfo(lcAccountManager) << "Account for" << acc->url() << "using auth type" << authType;
