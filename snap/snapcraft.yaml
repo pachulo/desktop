@@ -1,5 +1,5 @@
 name: nextcloud-client
-version: 2.5.0-rc2
+version: 2.5.0
 icon: theme/colored/Nextcloud-icon.svg
 summary: Nextcloud Desktop Client
 description: |
@@ -15,7 +15,7 @@ parts:
     plugin: cmake
     source: .
     source-type: git
-    source-tag: v2.5.0-rc2
+    source-tag: v2.5.0
     #source-subdir: client
     build-packages:
       - g++
