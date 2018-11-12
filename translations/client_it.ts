@@ -153,7 +153,7 @@
     <message>
         <location filename="../src/gui/accountmanager.cpp" line="343"/>
         <source>To protect your Cryptocraphic Identity, we encrypt it with a mnemonic of 12 dictionary words.Please note these down and keep them safe. They will be needed to add other devices to your account (like your mobile phone or laptop).</source>
-        <translation type="unfinished"/>
+        <translation>Per proteggere la tua identità crittografica, la cifriamo con codice mnemonico di 12 parole di dizionario. Annotale e tienile al sicuro. Saranno necessarie per aggiungere altri dispositivi al tuo account (come il tuo smartphone o il portatile).</translation>
     </message>
 </context>
 <context>
@@ -819,7 +819,11 @@
 This means that the synchronization client might not upload local changes immediately and will instead only scan for local changes and upload them occasionally (every two hours by default).
 
 %1</source>
-        <translation type="unfinished"/>
+        <translation>Le modifiche nelle cartelle sincronizzate non possono essere tracciate in modo affidabile.
+
+Questo significa che il client di sincronizzazione potrebbe non caricare le modifiche locali immediatamente e, invece, eseguirà solo la scansione delle modifiche locali e le caricherà occasionalmente (ogni due ore, in modo predefinito).
+
+%1</translation>
     </message>
     <message>
         <location filename="../src/gui/folder.cpp" line="1071"/>
@@ -1563,7 +1567,9 @@ Gli elementi per i quali è consentita l&apos;eliminazione, saranno eliminati se
         <source>When this option is enabled and no other logging is configured, logs will be written to a temporary folder and expire after a few hours. This setting persists across client restarts.
 
 Logs will be written to %1</source>
-        <translation type="unfinished"/>
+        <translation>Se questa opzione è abilitata e non è configurato un altro sistema di scrittura dei log, i log saranno scritti in una cartella temporanea e scadranno dopo poche ore. Questa impostazione viene conservata in caso di riavvio del client.
+
+I log saranno scritti in %1</translation>
     </message>
     <message>
         <location filename="../src/gui/logbrowser.cpp" line="115"/>
@@ -2837,7 +2843,7 @@ Non è consigliabile utilizzarlo.</translation>
     <message>
         <location filename="../src/gui/socketapi.cpp" line="491"/>
         <source>Context menu share</source>
-        <translation type="unfinished"/>
+        <translation>Condivisione da menu contestuale</translation>
     </message>
     <message>
         <location filename="../src/gui/socketapi.cpp" line="612"/>

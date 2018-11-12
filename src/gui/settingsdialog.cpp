@@ -88,6 +88,7 @@ SettingsDialog::SettingsDialog(ownCloudGui *gui, QWidget *parent)
     connect(AccountManager::instance(), &AccountManager::accountRemoved,
         this, &SettingsDialog::accountRemoved);
 
+
     _actionGroup = new QActionGroup(this);
     _actionGroup->setExclusive(true);
     connect(_actionGroup, &QActionGroup::triggered, this, &SettingsDialog::slotSwitchPage);
@@ -188,6 +189,15 @@ void SettingsDialog::showActivityPage()
     }
 }
 
+void SettingsDialog::showIssuesList(AccountState *account) {
+    for (auto it = _actionGroupWidgets.begin(); it != _actionGroupWidgets.end(); ++it) {
+        if (it.value() == _activitySettings[account]) {
+            it.key()->activate(QAction::ActionEvent::Trigger);
+            break;
+        }
+    }
+}
+
 void SettingsDialog::activityAdded(AccountState *s){
     _ui->stack->addWidget(_activitySettings[s]);
     connect(_activitySettings[s], &ActivitySettings::guiLog, _gui,
@@ -246,6 +256,7 @@ void SettingsDialog::accountAdded(AccountState *s)
     connect(accountSettings, &AccountSettings::folderChanged, _gui, &ownCloudGui::slotFoldersChanged);
     connect(accountSettings, &AccountSettings::openFolderAlias,
         _gui, &ownCloudGui::slotFolderOpenAction);
+    connect(accountSettings, &AccountSettings::showIssuesList, this, &SettingsDialog::showIssuesList);
     connect(s->account().data(), &Account::accountChangedAvatar, this, &SettingsDialog::slotAccountAvatarChanged);
     connect(s->account().data(), &Account::accountChangedDisplayName, this, &SettingsDialog::slotAccountDisplayNameChanged);
 
@@ -371,12 +382,12 @@ public:
     }
 
 
-    QWidget *createWidget(QWidget *parent) Q_DECL_OVERRIDE
+    QWidget *createWidget(QWidget *parent) override
     {
         auto toolbar = qobject_cast<QToolBar *>(parent);
         if (!toolbar) {
             // this means we are in the extention menu, no special action here
-            return 0;
+            return nullptr;
         }
 
         QToolButton *btn = new QToolButton(parent);
