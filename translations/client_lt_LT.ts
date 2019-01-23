@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/gui/cloudproviders/cloudproviderwrapper.cpp" line="107"/>
         <source>%1 (%2, %3)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (%2, %3)</translation>
     </message>
     <message>
         <location filename="../src/gui/cloudproviders/cloudproviderwrapper.cpp" line="124"/>
@@ -66,12 +66,12 @@
         <location filename="../src/common/filesystembase.cpp" line="459"/>
         <location filename="../src/common/filesystembase.cpp" line="465"/>
         <source>Could not move &apos;%1&apos; to &apos;%2&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyko perkelti &quot;%1&quot; į &quot;%2&quot;</translation>
     </message>
     <message>
         <location filename="../src/common/filesystembase.cpp" line="502"/>
         <source>Moving to the trash is not implemented on this platform</source>
-        <translation type="unfinished"/>
+        <translation>Perkėlimas į šiukšlinę šioje platformoje nėra įgyvendintas</translation>
     </message>
 </context>
 <context>
@@ -146,13 +146,13 @@
 <context>
     <name>OCC::AccountManager</name>
     <message>
-        <location filename="../src/gui/accountmanager.cpp" line="342"/>
+        <location filename="../src/gui/accountmanager.cpp" line="356"/>
         <source>End to end encryption mnemonic</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/accountmanager.cpp" line="343"/>
-        <source>To protect your Cryptocraphic Identity, we encrypt it with a mnemonic of 12 dictionary words.Please note these down and keep them safe. They will be needed to add other devices to your account (like your mobile phone or laptop).</source>
+        <location filename="../src/gui/accountmanager.cpp" line="357"/>
+        <source>To protect your Cryptographic Identity, we encrypt it with a mnemonic of 12 dictionary words. Please note these down and keep them safe. They will be needed to add other devices to your account (like your mobile phone or laptop).</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -476,12 +476,12 @@
     <message>
         <location filename="../src/gui/activityitemdelegate.cpp" line="131"/>
         <source>%1</source>
-        <translation type="unfinished"/>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../src/gui/activityitemdelegate.cpp" line="179"/>
         <source>More information</source>
-        <translation type="unfinished"/>
+        <translation>Daugiau informacijos</translation>
     </message>
     <message>
         <location filename="../src/gui/activityitemdelegate.cpp" line="180"/>
@@ -502,12 +502,12 @@
 <context>
     <name>OCC::ActivityWidget</name>
     <message>
-        <location filename="../src/gui/activitywidget.ui" line="78"/>
+        <location filename="../src/gui/activitywidget.ui" line="14"/>
         <source>Form</source>
         <translation>Forma</translation>
     </message>
     <message>
-        <location filename="../src/gui/activitywidget.ui" line="200"/>
+        <location filename="../src/gui/activitywidget.ui" line="84"/>
         <source>TextLabel</source>
         <translation>TextLabel
 </translation>
@@ -574,19 +574,19 @@
 <context>
     <name>OCC::Application</name>
     <message>
-        <location filename="../src/gui/application.cpp" line="190"/>
+        <location filename="../src/gui/application.cpp" line="192"/>
         <source>Error accessing the configuration file</source>
         <translation>Klaida gaunant prieigą prie konfigūracijos failo</translation>
     </message>
     <message>
-        <location filename="../src/gui/application.cpp" line="191"/>
-        <source>There was an error while accessing the configuration file at %1.</source>
-        <translation>Įvyko klaida gaunant prieigą prie konfigūracijos failo ties %1.</translation>
+        <location filename="../src/gui/application.cpp" line="193"/>
+        <source>There was an error while accessing the configuration file at %1. Please make sure the file can be accessed by your user.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/application.cpp" line="194"/>
-        <source>Quit ownCloud</source>
-        <translation>Išeiti iš ownCloud</translation>
+        <location filename="../src/gui/application.cpp" line="196"/>
+        <source>Quit %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -623,12 +623,12 @@
 <context>
     <name>OCC::ClientSideEncryption</name>
     <message>
-        <location filename="../src/libsync/clientsideencryption.cpp" line="992"/>
+        <location filename="../src/libsync/clientsideencryption.cpp" line="993"/>
         <source>Please enter your end to end encryption passphrase:&lt;br&gt;&lt;br&gt;User: %2&lt;br&gt;Account: %3&lt;br&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/clientsideencryption.cpp" line="1000"/>
+        <location filename="../src/libsync/clientsideencryption.cpp" line="1001"/>
         <source>Enter E2E passphrase</source>
         <translation type="unfinished"/>
     </message>
@@ -831,12 +831,12 @@ If you decide to delete the files, they will be unavailable to you, unless you a
     <message>
         <location filename="../src/gui/folder.cpp" line="1080"/>
         <source>Download new files?</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti naujus failus?</translation>
     </message>
     <message>
         <location filename="../src/gui/folder.cpp" line="1083"/>
         <source>Download new files</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsti naujus failus</translation>
     </message>
     <message>
         <location filename="../src/gui/folder.cpp" line="1084"/>
@@ -932,11 +932,6 @@ Jei tęsite sinchronizavimą, Jūsų ankstesni failai bus perrašyti senesniais.
         <translation>Paskutinis sinchronizavimas buvo sėkmingas.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1312"/>
-        <source>The local folder %1 contains a symbolic link. The link target contains an already synced folder. Please pick another one!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../src/gui/folderman.cpp" line="1228"/>
         <source>Setup Error.</source>
         <translation>Sąrankos klaida.</translation>
@@ -972,40 +967,35 @@ Jei tęsite sinchronizavimą, Jūsų ankstesni failai bus perrašyti senesniais.
         <translation>Jūs neturite leidimų rašyti į pasirinktą aplanką!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1327"/>
+        <location filename="../src/gui/folderman.cpp" line="1318"/>
         <source>There is already a sync from the server to this local folder. Please pick another local folder!</source>
         <translation>Šis lokalus aplankas jau turi sinchronizaciją su serveriu.  Pasirinkite kitą aplanką.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1287"/>
+        <location filename="../src/gui/folderman.cpp" line="1298"/>
         <source>The local folder %1 already contains a folder used in a folder sync connection. Please pick another one!</source>
         <translation>Vietiniame aplanke% 1 jau yra aplankas, naudojamas aplanko sinchronizavime. Prašome pasirinkti kitą!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1297"/>
+        <location filename="../src/gui/folderman.cpp" line="1304"/>
         <source>The local folder %1 is already contained in a folder used in a folder sync connection. Please pick another one!</source>
         <translation>Vietinis aplankas% 1 jau yra aplanke, naudojamame aplanko sinchronizavime. Prašome pasirinkti kitą!</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/folderman.cpp" line="1305"/>
-        <source>The local folder %1 is a symbolic link. The link target is already contained in a folder used in a folder sync connection. Please pick another one!</source>
-        <translation>Vietinis aplankas% 1 yra simbolinė nuoroda. Nuorodoje pateiktas aplankas jau yra aplanke, naudojamame aplanko sinchronizavime. Prašome pasirinkti kitą!</translation>
     </message>
 </context>
 <context>
     <name>OCC::FolderStatusDelegate</name>
     <message>
-        <location filename="../src/gui/folderstatusdelegate.cpp" line="46"/>
+        <location filename="../src/gui/folderstatusdelegate.cpp" line="48"/>
         <source>Add Folder Sync Connection</source>
         <translation>Pridėti aplanko sinchronizavimo ryšį</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderstatusdelegate.cpp" line="249"/>
+        <location filename="../src/gui/folderstatusdelegate.cpp" line="255"/>
         <source>Synchronized with local folder</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/folderstatusdelegate.cpp" line="296"/>
+        <location filename="../src/gui/folderstatusdelegate.cpp" line="302"/>
         <source>File</source>
         <translation>Failas</translation>
     </message>
@@ -1104,12 +1094,12 @@ Jei tęsite sinchronizavimą, Jūsų ankstesni failai bus perrašyti senesniais.
     <message>
         <location filename="../src/gui/folderstatusmodel.cpp" line="1000"/>
         <source>↓ %1/s</source>
-        <translation type="unfinished"/>
+        <translation>↓ %1/s</translation>
     </message>
     <message>
         <location filename="../src/gui/folderstatusmodel.cpp" line="1010"/>
         <source>↑ %1/s</source>
-        <translation type="unfinished"/>
+        <translation>↑ %1/s</translation>
     </message>
     <message>
         <location filename="../src/gui/folderstatusmodel.cpp" line="1016"/>
@@ -1168,12 +1158,12 @@ Jei tęsite sinchronizavimą, Jūsų ankstesni failai bus perrašyti senesniais.
 <context>
     <name>OCC::FolderWizard</name>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="548"/>
+        <location filename="../src/gui/folderwizard.cpp" line="550"/>
         <source>Add Folder Sync Connection</source>
         <translation>Pridėti aplanko sinchronizavimo ryšį</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="550"/>
+        <location filename="../src/gui/folderwizard.cpp" line="552"/>
         <source>Add Sync Connection</source>
         <translation>Pridėti sinchronizavimo ryšį</translation>
     </message>
@@ -1186,12 +1176,12 @@ Jei tęsite sinchronizavimą, Jūsų ankstesni failai bus perrašyti senesniais.
         <translation>Spustelėkite, norėdami pasirinkti vietinį aplanką, kurį sinchronizuoti.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="72"/>
+        <location filename="../src/gui/folderwizard.cpp" line="74"/>
         <source>Enter the path to the local folder.</source>
         <translation>Įveskite kelią iki lokalaus aplanko.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="133"/>
+        <location filename="../src/gui/folderwizard.cpp" line="135"/>
         <source>Select the source folder</source>
         <translation>Pasirinkite šaltinio aplanką</translation>
     </message>
@@ -1199,47 +1189,47 @@ Jei tęsite sinchronizavimą, Jūsų ankstesni failai bus perrašyti senesniais.
 <context>
     <name>OCC::FolderWizardRemotePath</name>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="181"/>
+        <location filename="../src/gui/folderwizard.cpp" line="183"/>
         <source>Create Remote Folder</source>
         <translation>Sukurti nuotolinį aplanką</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="182"/>
+        <location filename="../src/gui/folderwizard.cpp" line="184"/>
         <source>Enter the name of the new folder to be created below &apos;%1&apos;:</source>
         <translation>Įveskite naujo aplanko pavadinimą, kuris bus sukurtas po &quot;% 1&quot;:</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="212"/>
+        <location filename="../src/gui/folderwizard.cpp" line="214"/>
         <source>Folder was successfully created on %1.</source>
         <translation>Aplankas buvo sėkmingai sukurtas % 1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="223"/>
+        <location filename="../src/gui/folderwizard.cpp" line="225"/>
         <source>Authentication failed accessing %1</source>
         <translation>Nepavyko tapatumo nustatymas pasiekiant %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="225"/>
+        <location filename="../src/gui/folderwizard.cpp" line="227"/>
         <source>Failed to create the folder on %1. Please check manually.</source>
         <translation>Nepavyko sukurti aplanko ant %1. Prašome patikrinkite.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="234"/>
+        <location filename="../src/gui/folderwizard.cpp" line="236"/>
         <source>Failed to list a folder. Error: %1</source>
         <translation>Nepavyko įkelti katalogo. Klaida:% 1</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="315"/>
+        <location filename="../src/gui/folderwizard.cpp" line="317"/>
         <source>Choose this to sync the entire account</source>
         <translation>Pasirinkite, jei norite sinchronizuoti šią paskyrą</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="445"/>
+        <location filename="../src/gui/folderwizard.cpp" line="447"/>
         <source>This folder is already being synced.</source>
         <translation>Šis aplankas jau yra sinchronizuojamas.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="447"/>
+        <location filename="../src/gui/folderwizard.cpp" line="449"/>
         <source>You are already syncing &lt;i&gt;%1&lt;/i&gt;, which is a parent folder of &lt;i&gt;%2&lt;/i&gt;.</source>
         <translation>Jūs jau sinchronizuojate &lt;i&gt;%1&lt;/i&gt;, kuris yra tėvinis &lt;i&gt;%2&lt;/i&gt; katalogas.</translation>
     </message>
@@ -1290,7 +1280,7 @@ Jei tęsite sinchronizavimą, Jūsų ankstesni failai bus perrašyti senesniais.
     <message>
         <location filename="../src/gui/generalsettings.ui" line="41"/>
         <source>Legal notice</source>
-        <translation type="unfinished"/>
+        <translation>Teisinis pranešimas</translation>
     </message>
     <message>
         <location filename="../src/gui/generalsettings.ui" line="66"/>
@@ -1505,7 +1495,7 @@ Elementai, kuriuose galimas trynimas, bus ištrinti, jei jie apsaugos direktorij
     <message>
         <location filename="../src/gui/legalnotice.ui" line="26"/>
         <source>Legal notice</source>
-        <translation type="unfinished"/>
+        <translation>Teisinis pranešimas</translation>
     </message>
     <message>
         <location filename="../src/gui/legalnotice.ui" line="36"/>
@@ -1515,7 +1505,7 @@ Elementai, kuriuose galimas trynimas, bus ištrinti, jei jie apsaugos direktorij
     <message>
         <location filename="../src/gui/legalnotice.ui" line="58"/>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Užverti</translation>
     </message>
     <message>
         <location filename="../src/gui/legalnotice.cpp" line="27"/>
@@ -1843,45 +1833,55 @@ papildomų teisių.</translation>
 <context>
     <name>OCC::OwncloudAdvancedSetupPage</name>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="48"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="49"/>
         <source>Connect to %1</source>
         <translation>Prisijungti prie %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="49"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="50"/>
         <source>Setup local folder options</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="58"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="59"/>
         <source>Connect...</source>
         <translation>Prisijungti ...</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="156"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="157"/>
         <source>%1 folder &apos;%2&apos; is synced to local folder &apos;%3&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="159"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="160"/>
         <source>Sync the folder &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="164"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="165"/>
         <source>&lt;p&gt;&lt;small&gt;&lt;strong&gt;Warning:&lt;/strong&gt; The local folder is not empty. Pick a resolution!&lt;/small&gt;&lt;/p&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="285"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="174"/>
+        <source>Free space: %1</source>
+        <translation>Laisva vieta: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="297"/>
         <source>Local Sync Folder</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="324"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="345"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="340"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="370"/>
         <source>(%1)</source>
         <translation>(%1)</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="385"/>
+        <source>There is no enough free space in the local folder!</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1938,14 +1938,19 @@ papildomų teisių.</translation>
 <context>
     <name>OCC::OwncloudOAuthCredsPage</name>
     <message>
-        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="43"/>
+        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="45"/>
         <source>Connect to %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="44"/>
+        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="46"/>
         <source>Login in your browser</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="56"/>
+        <source>Copy link to clipboard</source>
+        <translation>Kopijuoti nuorodą į iškarpinę</translation>
     </message>
 </context>
 <context>
@@ -1981,26 +1986,31 @@ papildomų teisių.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="198"/>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="180"/>
         <source>This url is NOT secure as it is not encrypted.
 It is not advisable to use it.</source>
         <translation>Šis url NĖRA saugus, nes jis nėra šifruotas.
 Patariama jo nenaudoti.</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="202"/>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="184"/>
         <source>This url is secure. You can use it.</source>
         <translation>Šis url yra saugus. Galite jį naudoti.</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="241"/>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="223"/>
         <source>&amp;Next &gt;</source>
         <translation>&amp;Kitas &gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="414"/>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="281"/>
+        <source>Invalid URL</source>
+        <translation>Neteisingas URL</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="403"/>
         <source>Could not load certificate. Maybe wrong password?</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyko įkelti liudijimo. Galbūt, neteisingas slaptažodis?</translation>
     </message>
 </context>
 <context>
@@ -2023,7 +2033,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="334"/>
         <source>Trying to connect to %1 at %2...</source>
-        <translation type="unfinished"/>
+        <translation>Bandoma prisijungti prie %1 ties %2...</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="385"/>
@@ -2087,13 +2097,13 @@ Patariama jo nenaudoti.</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="508"/>
-        <source>creating folder on ownCloud: %1</source>
+        <source>creating folder on Nextcloud: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="524"/>
         <source>Remote folder %1 created successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Nuotolinis aplankas %1 sėkmingai sukurtas.</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="526"/>
@@ -2104,7 +2114,7 @@ Patariama jo nenaudoti.</translation>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="528"/>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="530"/>
         <source>The folder creation resulted in HTTP error code %1</source>
-        <translation type="unfinished"/>
+        <translation>Aplanko sukūrimas sąlygojo HTTP klaidos kodą %1</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="532"/>
@@ -2250,7 +2260,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/propagatedownload.cpp" line="938"/>
         <source>Error writing metadata to the database</source>
-        <translation type="unfinished"/>
+        <translation>Klaida rašant metaduomenis į duomenų bazę</translation>
     </message>
 </context>
 <context>
@@ -2318,7 +2328,7 @@ Patariama jo nenaudoti.</translation>
         <location filename="../src/libsync/propagatorjobs.cpp" line="272"/>
         <location filename="../src/libsync/propagatorjobs.cpp" line="277"/>
         <source>Error writing metadata to the database</source>
-        <translation type="unfinished"/>
+        <translation>Klaida rašant metaduomenis į duomenų bazę</translation>
     </message>
 </context>
 <context>
@@ -2395,7 +2405,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/propagateuploadng.cpp" line="403"/>
         <source>The local file was removed during sync.</source>
-        <translation type="unfinished"/>
+        <translation>Vietinis failas sinchronizavimo metu buvo pašalintas.</translation>
     </message>
     <message>
         <location filename="../src/libsync/propagateuploadng.cpp" line="414"/>
@@ -2428,7 +2438,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/propagateuploadv1.cpp" line="240"/>
         <source>The local file was removed during sync.</source>
-        <translation>Vietinis failas buvo ištrintas sinchronizavimo metu.</translation>
+        <translation>Vietinis failas sinchronizavimo metu buvo pašalintas.</translation>
     </message>
     <message>
         <location filename="../src/libsync/propagateuploadv1.cpp" line="251"/>
@@ -2508,18 +2518,18 @@ Patariama jo nenaudoti.</translation>
         <location filename="../src/gui/selectivesyncdialog.cpp" line="227"/>
         <location filename="../src/gui/selectivesyncdialog.cpp" line="277"/>
         <source>No subfolders currently on the server.</source>
-        <translation type="unfinished"/>
+        <translation>Šiuo metu serveryje nėra jokių poaplankių.</translation>
     </message>
     <message>
         <location filename="../src/gui/selectivesyncdialog.cpp" line="279"/>
         <source>An error occurred while loading the list of sub folders.</source>
-        <translation type="unfinished"/>
+        <translation>Įkeliant poaplankių sąrašą, įvyko klaida.</translation>
     </message>
 </context>
 <context>
     <name>OCC::ServerNotificationHandler</name>
     <message>
-        <location filename="../src/gui/servernotificationhandler.cpp" line="150"/>
+        <location filename="../src/gui/servernotificationhandler.cpp" line="153"/>
         <source>Dismiss</source>
         <translation type="unfinished"/>
     </message>
@@ -2532,22 +2542,22 @@ Patariama jo nenaudoti.</translation>
         <translation>Nustatymai</translation>
     </message>
     <message>
-        <location filename="../src/gui/settingsdialog.cpp" line="204"/>
+        <location filename="../src/gui/settingsdialog.cpp" line="211"/>
         <source>Activity</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/settingsdialog.cpp" line="108"/>
+        <location filename="../src/gui/settingsdialog.cpp" line="105"/>
         <source>General</source>
         <translation>Bendra</translation>
     </message>
     <message>
-        <location filename="../src/gui/settingsdialog.cpp" line="114"/>
+        <location filename="../src/gui/settingsdialog.cpp" line="111"/>
         <source>Network</source>
         <translation>Tinklas</translation>
     </message>
     <message>
-        <location filename="../src/gui/settingsdialog.cpp" line="227"/>
+        <location filename="../src/gui/settingsdialog.cpp" line="234"/>
         <source>Account</source>
         <translation>Paskyra</translation>
     </message>
@@ -2584,24 +2594,19 @@ Patariama jo nenaudoti.</translation>
 <context>
     <name>OCC::ShareDialog</name>
     <message>
-        <location filename="../src/gui/sharedialog.ui" line="125"/>
+        <location filename="../src/gui/sharedialog.ui" line="92"/>
         <source>share label</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharedialog.ui" line="32"/>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/sharedialog.ui" line="91"/>
+        <location filename="../src/gui/sharedialog.ui" line="67"/>
         <source>ownCloud Path:</source>
         <translation>ownCloud kelias:</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharedialog.ui" line="162"/>
+        <location filename="../src/gui/sharedialog.ui" line="123"/>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Piktograma</translation>
     </message>
     <message>
         <location filename="../src/gui/sharedialog.cpp" line="101"/>
@@ -2627,125 +2632,115 @@ Patariama jo nenaudoti.</translation>
 <context>
     <name>OCC::ShareLinkWidget</name>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="32"/>
-        <source>Share NewDocument.odt</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="122"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="46"/>
         <source>&amp;Share link</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="145"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="89"/>
         <source>Enable</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="259"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="118"/>
         <source>Password:</source>
-        <translation type="unfinished"/>
+        <translation>Slaptažodis:</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="383"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="158"/>
         <source>Expiration date:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="508"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="226"/>
         <source>TextLabel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="454"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="466"/>
         <source>Delete</source>
         <translation>Ištrinti</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="189"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="186"/>
         <source>Allow Editing</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="195"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="192"/>
         <source>Read only</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="203"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="200"/>
         <source>Allow Upload &amp;&amp; Editing</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="208"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="205"/>
         <source>File Drop (Upload Only)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="215"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="212"/>
         <source>Copy link</source>
-        <translation type="unfinished"/>
+        <translation>Kopijuoti nuorodą</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="228"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="225"/>
         <source>Password Protect</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="245"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="242"/>
         <source>Expiration Date</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="265"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="262"/>
         <source>Unshare</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="447"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="459"/>
         <source>Confirm Link Share Deletion</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="448"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="460"/>
         <source>&lt;p&gt;Do you really want to delete the public link share &lt;i&gt;%1&lt;/i&gt;?&lt;/p&gt;&lt;p&gt;Note: This action cannot be undone.&lt;/p&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="455"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="467"/>
         <source>Cancel</source>
         <translation>Atsisakyti</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="471"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="483"/>
         <source>Public link</source>
-        <translation type="unfinished"/>
+        <translation>Viešoji nuoroda</translation>
     </message>
 </context>
 <context>
     <name>OCC::ShareUserGroupWidget</name>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.ui" line="32"/>
-        <source>Share NewDocument.odt</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/shareusergroupwidget.ui" line="97"/>
+        <location filename="../src/gui/shareusergroupwidget.ui" line="52"/>
         <source>Share with users or groups ...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="248"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="238"/>
         <source>Copy link</source>
-        <translation type="unfinished"/>
+        <translation>Kopijuoti nuorodą</translation>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="258"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="248"/>
         <source>No results for &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="357"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="335"/>
         <source>I shared something with you</source>
         <translation type="unfinished"/>
     </message>
@@ -2753,37 +2748,32 @@ Patariama jo nenaudoti.</translation>
 <context>
     <name>OCC::ShareUserLine</name>
     <message>
-        <location filename="../src/gui/shareuserline.ui" line="35"/>
-        <source>Form</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/shareuserline.ui" line="114"/>
+        <location filename="../src/gui/shareuserline.ui" line="66"/>
         <source>User name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareuserline.ui" line="155"/>
+        <location filename="../src/gui/shareuserline.ui" line="82"/>
         <source>can edit</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="388"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="364"/>
         <source>Can reshare</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="398"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="374"/>
         <source>Can create</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="404"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="380"/>
         <source>Can change</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="410"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="386"/>
         <source>Can delete</source>
         <translation type="unfinished"/>
     </message>
@@ -2798,7 +2788,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/gui/creds/shibbolethcredentials.cpp" line="259"/>
         <source>You must sign in as user %1</source>
-        <translation type="unfinished"/>
+        <translation>Privalote prisijungti kaip naudotojas %1</translation>
     </message>
 </context>
 <context>
@@ -2811,7 +2801,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/gui/creds/shibboleth/shibbolethwebview.cpp" line="93"/>
         <source>SSL Chipher Debug View</source>
-        <translation type="unfinished"/>
+        <translation>SSL šifro derinimo rodinys</translation>
     </message>
     <message>
         <location filename="../src/gui/creds/shibboleth/shibbolethwebview.cpp" line="101"/>
@@ -2829,7 +2819,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/gui/socketapi.cpp" line="457"/>
         <source>Share with %1</source>
-        <comment>parameter is ownCloud</comment>
+        <comment>parameter is Nextcloud</comment>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2868,12 +2858,12 @@ Patariama jo nenaudoti.</translation>
         <location filename="../src/gui/socketapi.cpp" line="666"/>
         <location filename="../src/gui/socketapi.cpp" line="668"/>
         <source>Copy public link to clipboard</source>
-        <translation type="unfinished"/>
+        <translation>Kopijuoti viešąją nuorodą į iškarpinę</translation>
     </message>
     <message>
         <location filename="../src/gui/socketapi.cpp" line="722"/>
         <source>Open in browser</source>
-        <translation type="unfinished"/>
+        <translation>Atverti naršyklėje</translation>
     </message>
 </context>
 <context>
@@ -3025,7 +3015,7 @@ Patariama jo nenaudoti.</translation>
         <location filename="../src/gui/sslerrordialog.cpp" line="177"/>
         <location filename="../src/gui/sslerrordialog.cpp" line="179"/>
         <source>&amp;lt;not specified&amp;gt;</source>
-        <translation type="unfinished"/>
+        <translation>&amp;lt;nenurodyta&amp;gt;</translation>
     </message>
     <message>
         <location filename="../src/gui/sslerrordialog.cpp" line="180"/>
@@ -3063,7 +3053,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/gui/sslerrordialog.cpp" line="193"/>
         <source>Expiration Date: %1</source>
-        <translation type="unfinished"/>
+        <translation>Galioja iki: %1</translation>
     </message>
     <message>
         <location filename="../src/gui/sslerrordialog.cpp" line="197"/>
@@ -3157,7 +3147,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/syncengine.cpp" line="148"/>
         <source>CSync unspecified error.</source>
-        <translation type="unfinished"/>
+        <translation>Nenurodyta CSync klaida.</translation>
     </message>
     <message>
         <location filename="../src/libsync/syncengine.cpp" line="151"/>
@@ -3182,12 +3172,12 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/syncengine.cpp" line="139"/>
         <source>File or directory not found:</source>
-        <translation type="unfinished"/>
+        <translation>Failas ar katalogas nerastas:</translation>
     </message>
     <message>
         <location filename="../src/libsync/syncengine.cpp" line="142"/>
         <source>Tried to create a folder that already exists.</source>
-        <translation type="unfinished"/>
+        <translation>Bandyta sukurti aplanką, kuris jau yra.</translation>
     </message>
     <message>
         <location filename="../src/libsync/syncengine.cpp" line="145"/>
@@ -3232,12 +3222,12 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/syncengine.cpp" line="503"/>
         <source>The file name is a reserved name on this file system.</source>
-        <translation type="unfinished"/>
+        <translation>Šis failo pavadinimas šioje failų sistemoje yra rezervuotas.</translation>
     </message>
     <message>
         <location filename="../src/libsync/syncengine.cpp" line="508"/>
         <source>Filename contains trailing spaces.</source>
-        <translation type="unfinished"/>
+        <translation>Failo pavadinime yra galiniai tarpai.</translation>
     </message>
     <message>
         <location filename="../src/libsync/syncengine.cpp" line="511"/>
@@ -3362,19 +3352,19 @@ Patariama jo nenaudoti.</translation>
     </message>
     <message>
         <location filename="../src/libsync/theme.cpp" line="341"/>
-        <source>&lt;p&gt;This release was supplied by the Nextcloud GmbH&lt;/p&gt;</source>
+        <source>&lt;p&gt;This release was supplied by %1&lt;/p&gt;</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>OCC::WebFlowCredentials</name>
     <message>
-        <location filename="../src/gui/creds/webflowcredentials.cpp" line="122"/>
+        <location filename="../src/gui/creds/webflowcredentials.cpp" line="124"/>
         <source>You have been logged out of %1 as user %2. Please login again</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/creds/webflowcredentials.cpp" line="139"/>
+        <location filename="../src/gui/creds/webflowcredentials.cpp" line="141"/>
         <source>Please login with the user: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -3494,7 +3484,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/gui/owncloudgui.cpp" line="303"/>
         <source>Signed out</source>
-        <translation type="unfinished"/>
+        <translation>Atsijungta</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudgui.cpp" line="307"/>
@@ -3623,73 +3613,74 @@ Patariama jo nenaudoti.</translation>
     </message>
     <message>
         <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="32"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="81"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="134"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="253"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="358"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="388"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="414"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="100"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="205"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="235"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="294"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="386"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="395"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="421"/>
         <source>TextLabel</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="91"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="304"/>
         <source>Server</source>
         <translation>Serveris</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="203"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="354"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If this box is checked, existing content in the local folder will be erased to start a clean sync from the server.&lt;/p&gt;&lt;p&gt;Do not check this if the local content should be uploaded to the servers folder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="206"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="357"/>
         <source>Start a &amp;clean sync (Erases the local folder!)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="301"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="148"/>
         <source>Ask for confirmation before synchroni&amp;zing folders larger than</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="318"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="165"/>
         <source>MB</source>
         <extracomment>Trailing part of &quot;Ask confirmation before syncing folder larger than&quot; </extracomment>
         <translation>MB</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="327"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="174"/>
         <source>Ask for confirmation before synchronizing e&amp;xternal storages</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="351"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="198"/>
         <source>Choose what to sync</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="150"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="251"/>
         <source>&amp;Local Folder</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="225"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="285"/>
         <source>pbSelectLocalFolder</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="193"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="344"/>
         <source>&amp;Keep local data</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="243"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="90"/>
         <source>S&amp;ync everything from server</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="395"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="402"/>
         <source>Status message</source>
         <translation type="unfinished"/>
     </message>
@@ -3750,7 +3741,7 @@ Patariama jo nenaudoti.</translation>
     </message>
     <message>
         <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="66"/>
-        <source>&lt;a href=&quot;https://docs.nextcloud.com/server/13/admin_manual/installation/index.html#installation&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Host your own server&lt;/span&gt;&lt;/a&gt;</source>
+        <source>&lt;a href=&quot;https://docs.nextcloud.com/server/15/admin_manual/installation/index.html#installation&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Host your own server&lt;/span&gt;&lt;/a&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3764,22 +3755,17 @@ Patariama jo nenaudoti.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="241"/>
-        <source>SlideshowLabel</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="316"/>
+        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="288"/>
         <source>Ser&amp;ver Address</source>
         <translation>Ser&amp;verio adresas</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="332"/>
+        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="304"/>
         <source>https://...</source>
         <translation>https://...</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="367"/>
+        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="339"/>
         <source>Error Label</source>
         <translation type="unfinished"/>
     </message>
@@ -3930,17 +3916,17 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/common/checksums.cpp" line="233"/>
         <source>The checksum header is malformed.</source>
-        <translation type="unfinished"/>
+        <translation>Kontrolinės sumos antraštė yra netaisyklinga.</translation>
     </message>
     <message>
         <location filename="../src/common/checksums.cpp" line="248"/>
         <source>The checksum header contained an unknown checksum type &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Kontrolinės sumos antraštėje buvo nežinomas kontrolinės sumos tipas &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/common/checksums.cpp" line="252"/>
         <source>The downloaded file does not match the checksum, it will be resumed.</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųstas failas neatitinka kontrolinės sumos, jis bus pratęstas.</translation>
     </message>
 </context>
 <context>
@@ -3954,12 +3940,12 @@ Patariama jo nenaudoti.</translation>
 <context>
     <name>main.cpp</name>
     <message>
-        <location filename="../src/gui/main.cpp" line="42"/>
+        <location filename="../src/gui/main.cpp" line="39"/>
         <source>System Tray not available</source>
         <translation>Sistemos dėklas neprieinamas</translation>
     </message>
     <message>
-        <location filename="../src/gui/main.cpp" line="43"/>
+        <location filename="../src/gui/main.cpp" line="40"/>
         <source>%1 requires on a working system tray. If you are running XFCE, please follow &lt;a href=&quot;http://docs.xfce.org/xfce/xfce4-panel/systray&quot;&gt;these instructions&lt;/a&gt;. Otherwise, please install a system tray application such as &apos;trayer&apos; and try again.</source>
         <translation type="unfinished"/>
     </message>
@@ -3977,7 +3963,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="32"/>
         <source>Downloaded</source>
-        <translation type="unfinished"/>
+        <translation>Atsisiųsta</translation>
     </message>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="34"/>
@@ -3992,22 +3978,22 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="39"/>
         <source>Deleted</source>
-        <translation type="unfinished"/>
+        <translation>Ištrinta</translation>
     </message>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="42"/>
         <source>Moved to %1</source>
-        <translation type="unfinished"/>
+        <translation>Perkelta į %1</translation>
     </message>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="44"/>
         <source>Ignored</source>
-        <translation type="unfinished"/>
+        <translation>Nepaisoma</translation>
     </message>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="46"/>
         <source>Filesystem access error</source>
-        <translation type="unfinished"/>
+        <translation>Prieigos prie failų sistemos klaida</translation>
     </message>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="48"/>
@@ -4023,12 +4009,12 @@ Patariama jo nenaudoti.</translation>
         <location filename="../src/libsync/progressdispatcher.cpp" line="53"/>
         <location filename="../src/libsync/progressdispatcher.cpp" line="55"/>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Nežinoma</translation>
     </message>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="66"/>
         <source>downloading</source>
-        <translation type="unfinished"/>
+        <translation>atsisiunčiama</translation>
     </message>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="68"/>
@@ -4038,7 +4024,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="70"/>
         <source>deleting</source>
-        <translation type="unfinished"/>
+        <translation>ištrinama</translation>
     </message>
     <message>
         <location filename="../src/libsync/progressdispatcher.cpp" line="73"/>
@@ -4067,7 +4053,7 @@ Patariama jo nenaudoti.</translation>
     <message>
         <location filename="../src/libsync/theme.cpp" line="62"/>
         <source>Status undefined</source>
-        <translation type="unfinished"/>
+        <translation>Neapibrėžta būsena</translation>
     </message>
     <message>
         <location filename="../src/libsync/theme.cpp" line="65"/>

@@ -146,13 +146,13 @@
 <context>
     <name>OCC::AccountManager</name>
     <message>
-        <location filename="../src/gui/accountmanager.cpp" line="342"/>
+        <location filename="../src/gui/accountmanager.cpp" line="356"/>
         <source>End to end encryption mnemonic</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/accountmanager.cpp" line="343"/>
-        <source>To protect your Cryptocraphic Identity, we encrypt it with a mnemonic of 12 dictionary words.Please note these down and keep them safe. They will be needed to add other devices to your account (like your mobile phone or laptop).</source>
+        <location filename="../src/gui/accountmanager.cpp" line="357"/>
+        <source>To protect your Cryptographic Identity, we encrypt it with a mnemonic of 12 dictionary words. Please note these down and keep them safe. They will be needed to add other devices to your account (like your mobile phone or laptop).</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -502,12 +502,12 @@
 <context>
     <name>OCC::ActivityWidget</name>
     <message>
-        <location filename="../src/gui/activitywidget.ui" line="78"/>
+        <location filename="../src/gui/activitywidget.ui" line="14"/>
         <source>Form</source>
         <translation>Formulari</translation>
     </message>
     <message>
-        <location filename="../src/gui/activitywidget.ui" line="200"/>
+        <location filename="../src/gui/activitywidget.ui" line="84"/>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
     </message>
@@ -573,19 +573,19 @@
 <context>
     <name>OCC::Application</name>
     <message>
-        <location filename="../src/gui/application.cpp" line="190"/>
+        <location filename="../src/gui/application.cpp" line="192"/>
         <source>Error accessing the configuration file</source>
         <translation>S&apos;ha produït un error en accedir al fitxer de configuració</translation>
     </message>
     <message>
-        <location filename="../src/gui/application.cpp" line="191"/>
-        <source>There was an error while accessing the configuration file at %1.</source>
-        <translation>Hi ha hagut un error en accedir al fitxer de configuració a %1.</translation>
+        <location filename="../src/gui/application.cpp" line="193"/>
+        <source>There was an error while accessing the configuration file at %1. Please make sure the file can be accessed by your user.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/application.cpp" line="194"/>
-        <source>Quit ownCloud</source>
-        <translation>Surt de l&apos;ownCloud</translation>
+        <location filename="../src/gui/application.cpp" line="196"/>
+        <source>Quit %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -622,12 +622,12 @@
 <context>
     <name>OCC::ClientSideEncryption</name>
     <message>
-        <location filename="../src/libsync/clientsideencryption.cpp" line="992"/>
+        <location filename="../src/libsync/clientsideencryption.cpp" line="993"/>
         <source>Please enter your end to end encryption passphrase:&lt;br&gt;&lt;br&gt;User: %2&lt;br&gt;Account: %3&lt;br&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/clientsideencryption.cpp" line="1000"/>
+        <location filename="../src/libsync/clientsideencryption.cpp" line="1001"/>
         <source>Enter E2E passphrase</source>
         <translation type="unfinished"/>
     </message>
@@ -928,11 +928,6 @@ Continuing the sync as normal will cause all your files to be overwritten by an 
         <translation>La darrera sincronització va ser correcta.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1312"/>
-        <source>The local folder %1 contains a symbolic link. The link target contains an already synced folder. Please pick another one!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../src/gui/folderman.cpp" line="1228"/>
         <source>Setup Error.</source>
         <translation>Error de configuració.</translation>
@@ -968,40 +963,35 @@ Continuing the sync as normal will cause all your files to be overwritten by an 
         <translation>No teniu permisos per escriure en la carpeta seleccionada!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1327"/>
+        <location filename="../src/gui/folderman.cpp" line="1318"/>
         <source>There is already a sync from the server to this local folder. Please pick another local folder!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1287"/>
+        <location filename="../src/gui/folderman.cpp" line="1298"/>
         <source>The local folder %1 already contains a folder used in a folder sync connection. Please pick another one!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1297"/>
+        <location filename="../src/gui/folderman.cpp" line="1304"/>
         <source>The local folder %1 is already contained in a folder used in a folder sync connection. Please pick another one!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/folderman.cpp" line="1305"/>
-        <source>The local folder %1 is a symbolic link. The link target is already contained in a folder used in a folder sync connection. Please pick another one!</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>OCC::FolderStatusDelegate</name>
     <message>
-        <location filename="../src/gui/folderstatusdelegate.cpp" line="46"/>
+        <location filename="../src/gui/folderstatusdelegate.cpp" line="48"/>
         <source>Add Folder Sync Connection</source>
         <translation>Afegeix connexions de carpetes sincronitzades</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderstatusdelegate.cpp" line="249"/>
+        <location filename="../src/gui/folderstatusdelegate.cpp" line="255"/>
         <source>Synchronized with local folder</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/folderstatusdelegate.cpp" line="296"/>
+        <location filename="../src/gui/folderstatusdelegate.cpp" line="302"/>
         <source>File</source>
         <translation>Fitxer</translation>
     </message>
@@ -1162,12 +1152,12 @@ Continuing the sync as normal will cause all your files to be overwritten by an 
 <context>
     <name>OCC::FolderWizard</name>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="548"/>
+        <location filename="../src/gui/folderwizard.cpp" line="550"/>
         <source>Add Folder Sync Connection</source>
         <translation>Afegeix connexions de carpetes sincronitzades</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="550"/>
+        <location filename="../src/gui/folderwizard.cpp" line="552"/>
         <source>Add Sync Connection</source>
         <translation>Afegir una connexió de sincronització</translation>
     </message>
@@ -1180,12 +1170,12 @@ Continuing the sync as normal will cause all your files to be overwritten by an 
         <translation>Feu clic per seleccionar un directori local per sincronitzar.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="72"/>
+        <location filename="../src/gui/folderwizard.cpp" line="74"/>
         <source>Enter the path to the local folder.</source>
         <translation>Introduïu la ruta del directori local.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="133"/>
+        <location filename="../src/gui/folderwizard.cpp" line="135"/>
         <source>Select the source folder</source>
         <translation>Seleccioneu la carpeta font</translation>
     </message>
@@ -1193,47 +1183,47 @@ Continuing the sync as normal will cause all your files to be overwritten by an 
 <context>
     <name>OCC::FolderWizardRemotePath</name>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="181"/>
+        <location filename="../src/gui/folderwizard.cpp" line="183"/>
         <source>Create Remote Folder</source>
         <translation>Crea una carpeta remota</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="182"/>
+        <location filename="../src/gui/folderwizard.cpp" line="184"/>
         <source>Enter the name of the new folder to be created below &apos;%1&apos;:</source>
         <translation>Introduïu el nom de la carpeta nova que es crearà a sota &apos;%1&apos;:</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="212"/>
+        <location filename="../src/gui/folderwizard.cpp" line="214"/>
         <source>Folder was successfully created on %1.</source>
         <translation>La carpeta s&apos;ha creat correctament a %1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="223"/>
+        <location filename="../src/gui/folderwizard.cpp" line="225"/>
         <source>Authentication failed accessing %1</source>
         <translation>Autentificació fallida en accedir %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="225"/>
+        <location filename="../src/gui/folderwizard.cpp" line="227"/>
         <source>Failed to create the folder on %1. Please check manually.</source>
         <translation>No s&apos;ha pogut crear el directori en %1. Si us plau, comproveu-lo manualment.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="234"/>
+        <location filename="../src/gui/folderwizard.cpp" line="236"/>
         <source>Failed to list a folder. Error: %1</source>
         <translation>Ha fallat en llistar una carpeta. Error: %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="315"/>
+        <location filename="../src/gui/folderwizard.cpp" line="317"/>
         <source>Choose this to sync the entire account</source>
         <translation>Escolliu-ho per sincronitzar el compte sencer</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="445"/>
+        <location filename="../src/gui/folderwizard.cpp" line="447"/>
         <source>This folder is already being synced.</source>
         <translation>Ja s&apos;està sincronitzant aquest directori.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderwizard.cpp" line="447"/>
+        <location filename="../src/gui/folderwizard.cpp" line="449"/>
         <source>You are already syncing &lt;i&gt;%1&lt;/i&gt;, which is a parent folder of &lt;i&gt;%2&lt;/i&gt;.</source>
         <translation>Ja esteu sincronitzant &lt;i&gt;%1&lt;/i&gt;, que és una carpeta dins de &lt;i&gt;%2&lt;/i&gt;.</translation>
     </message>
@@ -1837,45 +1827,55 @@ privilegis addicionals durant el procés.</translation>
 <context>
     <name>OCC::OwncloudAdvancedSetupPage</name>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="48"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="49"/>
         <source>Connect to %1</source>
         <translation>Connecta a %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="49"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="50"/>
         <source>Setup local folder options</source>
         <translation>Estableix les opcions de carpeta local</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="58"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="59"/>
         <source>Connect...</source>
         <translation>Connecta...</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="156"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="157"/>
         <source>%1 folder &apos;%2&apos; is synced to local folder &apos;%3&apos;</source>
         <translation>%1 carpeta &apos;%2&apos; està sincronitzat amb la carpeta local &apos;%3&apos;</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="159"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="160"/>
         <source>Sync the folder &apos;%1&apos;</source>
         <translation>Sincronitzar el directori &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="164"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="165"/>
         <source>&lt;p&gt;&lt;small&gt;&lt;strong&gt;Warning:&lt;/strong&gt; The local folder is not empty. Pick a resolution!&lt;/small&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;small&gt;&lt;strong&gt;Atenció:&lt;/strong&gt; La carpeta local no està buida. Trieu una resolució!&lt;/small&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="285"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="174"/>
+        <source>Free space: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="297"/>
         <source>Local Sync Folder</source>
         <translation>Fitxer local de sincronització</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="324"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="345"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="340"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="370"/>
         <source>(%1)</source>
         <translation>(%1)</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="385"/>
+        <source>There is no enough free space in the local folder!</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1932,13 +1932,18 @@ privilegis addicionals durant el procés.</translation>
 <context>
     <name>OCC::OwncloudOAuthCredsPage</name>
     <message>
-        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="43"/>
+        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="45"/>
         <source>Connect to %1</source>
         <translation>Connecta a %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="44"/>
+        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="46"/>
         <source>Login in your browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/wizard/owncloudoauthcredspage.cpp" line="56"/>
+        <source>Copy link to clipboard</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1975,24 +1980,29 @@ privilegis addicionals durant el procés.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="198"/>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="180"/>
         <source>This url is NOT secure as it is not encrypted.
 It is not advisable to use it.</source>
         <translation>Aquesta adreça NO és segura i no és encriptada.
 No és aconsellada usar-la.</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="202"/>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="184"/>
         <source>This url is secure. You can use it.</source>
         <translation>Aquesta url és segura. Podeu usar-la.</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="241"/>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="223"/>
         <source>&amp;Next &gt;</source>
         <translation>&amp;Següent &gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="414"/>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="281"/>
+        <source>Invalid URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="403"/>
         <source>Could not load certificate. Maybe wrong password?</source>
         <translation type="unfinished"/>
     </message>
@@ -2081,8 +2091,8 @@ No és aconsellada usar-la.</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="508"/>
-        <source>creating folder on ownCloud: %1</source>
-        <translation>creant la carpeta a ownCloud: %1</translation>
+        <source>creating folder on Nextcloud: %1</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="524"/>
@@ -2513,7 +2523,7 @@ No és aconsellada usar-la.</translation>
 <context>
     <name>OCC::ServerNotificationHandler</name>
     <message>
-        <location filename="../src/gui/servernotificationhandler.cpp" line="150"/>
+        <location filename="../src/gui/servernotificationhandler.cpp" line="153"/>
         <source>Dismiss</source>
         <translation type="unfinished"/>
     </message>
@@ -2523,25 +2533,25 @@ No és aconsellada usar-la.</translation>
     <message>
         <location filename="../src/gui/settingsdialog.ui" line="14"/>
         <source>Settings</source>
-        <translation>Configuració</translation>
+        <translation>Paràmetres</translation>
     </message>
     <message>
-        <location filename="../src/gui/settingsdialog.cpp" line="204"/>
+        <location filename="../src/gui/settingsdialog.cpp" line="211"/>
         <source>Activity</source>
         <translation>Activitat</translation>
     </message>
     <message>
-        <location filename="../src/gui/settingsdialog.cpp" line="108"/>
+        <location filename="../src/gui/settingsdialog.cpp" line="105"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../src/gui/settingsdialog.cpp" line="114"/>
+        <location filename="../src/gui/settingsdialog.cpp" line="111"/>
         <source>Network</source>
         <translation>Xarxa</translation>
     </message>
     <message>
-        <location filename="../src/gui/settingsdialog.cpp" line="227"/>
+        <location filename="../src/gui/settingsdialog.cpp" line="234"/>
         <source>Account</source>
         <translation>Compte</translation>
     </message>
@@ -2578,22 +2588,17 @@ No és aconsellada usar-la.</translation>
 <context>
     <name>OCC::ShareDialog</name>
     <message>
-        <location filename="../src/gui/sharedialog.ui" line="125"/>
+        <location filename="../src/gui/sharedialog.ui" line="92"/>
         <source>share label</source>
         <translation>comparteix l&apos;etiqueta</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharedialog.ui" line="32"/>
-        <source>Dialog</source>
-        <translation>Diàleg</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/sharedialog.ui" line="91"/>
+        <location filename="../src/gui/sharedialog.ui" line="67"/>
         <source>ownCloud Path:</source>
         <translation>camí de l&apos;OwnCloud:</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharedialog.ui" line="162"/>
+        <location filename="../src/gui/sharedialog.ui" line="123"/>
         <source>Icon</source>
         <translation type="unfinished"/>
     </message>
@@ -2621,97 +2626,92 @@ No és aconsellada usar-la.</translation>
 <context>
     <name>OCC::ShareLinkWidget</name>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="32"/>
-        <source>Share NewDocument.odt</source>
-        <translation>Comparteix DocumentNou.odt</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="122"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="46"/>
         <source>&amp;Share link</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="145"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="89"/>
         <source>Enable</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="259"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="118"/>
         <source>Password:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="383"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="158"/>
         <source>Expiration date:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.ui" line="508"/>
+        <location filename="../src/gui/sharelinkwidget.ui" line="226"/>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="454"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="466"/>
         <source>Delete</source>
         <translation>Esborra</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="189"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="186"/>
         <source>Allow Editing</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="195"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="192"/>
         <source>Read only</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="203"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="200"/>
         <source>Allow Upload &amp;&amp; Editing</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="208"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="205"/>
         <source>File Drop (Upload Only)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="215"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="212"/>
         <source>Copy link</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="228"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="225"/>
         <source>Password Protect</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="245"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="242"/>
         <source>Expiration Date</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="265"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="262"/>
         <source>Unshare</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="447"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="459"/>
         <source>Confirm Link Share Deletion</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="448"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="460"/>
         <source>&lt;p&gt;Do you really want to delete the public link share &lt;i&gt;%1&lt;/i&gt;?&lt;/p&gt;&lt;p&gt;Note: This action cannot be undone.&lt;/p&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="455"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="467"/>
         <source>Cancel</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="471"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="483"/>
         <source>Public link</source>
         <translation type="unfinished"/>
     </message>
@@ -2719,27 +2719,22 @@ No és aconsellada usar-la.</translation>
 <context>
     <name>OCC::ShareUserGroupWidget</name>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.ui" line="32"/>
-        <source>Share NewDocument.odt</source>
-        <translation>Comparteix DocumentNou.odt</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/shareusergroupwidget.ui" line="97"/>
+        <location filename="../src/gui/shareusergroupwidget.ui" line="52"/>
         <source>Share with users or groups ...</source>
         <translation>Comparteix amb usuaris o grups ...</translation>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="248"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="238"/>
         <source>Copy link</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="258"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="248"/>
         <source>No results for &apos;%1&apos;</source>
         <translation>No hi ha resultats per &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="357"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="335"/>
         <source>I shared something with you</source>
         <translation type="unfinished"/>
     </message>
@@ -2747,37 +2742,32 @@ No és aconsellada usar-la.</translation>
 <context>
     <name>OCC::ShareUserLine</name>
     <message>
-        <location filename="../src/gui/shareuserline.ui" line="35"/>
-        <source>Form</source>
-        <translation>Formulari</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/shareuserline.ui" line="114"/>
+        <location filename="../src/gui/shareuserline.ui" line="66"/>
         <source>User name</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareuserline.ui" line="155"/>
+        <location filename="../src/gui/shareuserline.ui" line="82"/>
         <source>can edit</source>
         <translation>pot editar</translation>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="388"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="364"/>
         <source>Can reshare</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="398"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="374"/>
         <source>Can create</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="404"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="380"/>
         <source>Can change</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="410"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="386"/>
         <source>Can delete</source>
         <translation type="unfinished"/>
     </message>
@@ -2823,8 +2813,8 @@ No és aconsellada usar-la.</translation>
     <message>
         <location filename="../src/gui/socketapi.cpp" line="457"/>
         <source>Share with %1</source>
-        <comment>parameter is ownCloud</comment>
-        <translation>Comparteix amb %1</translation>
+        <comment>parameter is Nextcloud</comment>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/gui/socketapi.cpp" line="491"/>
@@ -3356,19 +3346,19 @@ No és aconsellada usar-la.</translation>
     </message>
     <message>
         <location filename="../src/libsync/theme.cpp" line="341"/>
-        <source>&lt;p&gt;This release was supplied by the Nextcloud GmbH&lt;/p&gt;</source>
+        <source>&lt;p&gt;This release was supplied by %1&lt;/p&gt;</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>OCC::WebFlowCredentials</name>
     <message>
-        <location filename="../src/gui/creds/webflowcredentials.cpp" line="122"/>
+        <location filename="../src/gui/creds/webflowcredentials.cpp" line="124"/>
         <source>You have been logged out of %1 as user %2. Please login again</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/creds/webflowcredentials.cpp" line="139"/>
+        <location filename="../src/gui/creds/webflowcredentials.cpp" line="141"/>
         <source>Please login with the user: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -3617,73 +3607,74 @@ No és aconsellada usar-la.</translation>
     </message>
     <message>
         <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="32"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="81"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="134"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="253"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="358"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="388"/>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="414"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="100"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="205"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="235"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="294"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="386"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="395"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="421"/>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="91"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="304"/>
         <source>Server</source>
         <translation>Servidor</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="203"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="354"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If this box is checked, existing content in the local folder will be erased to start a clean sync from the server.&lt;/p&gt;&lt;p&gt;Do not check this if the local content should be uploaded to the servers folder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Si aquesta caixa està marcada, el contingut existent en la carpeta local s&apos;eliminarà per començar una nova sincronització des del servidor.&lt;/p&gt;&lt;p&gt;No la marqueu si el contingut local s&apos;ha de pujar a la carpeta del servidor.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="206"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="357"/>
         <source>Start a &amp;clean sync (Erases the local folder!)</source>
         <translation>Comença una sin&amp;cronització des de zero (esborra la carpeta local!)</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="301"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="148"/>
         <source>Ask for confirmation before synchroni&amp;zing folders larger than</source>
         <translation>Demana la confirmació abans de sincronit&amp;zar carpetes més grans de</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="318"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="165"/>
         <source>MB</source>
         <extracomment>Trailing part of &quot;Ask confirmation before syncing folder larger than&quot; </extracomment>
         <translation>MB</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="327"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="174"/>
         <source>Ask for confirmation before synchronizing e&amp;xternal storages</source>
         <translation>Demana la confirmació abans de sincronitzar fonts d&apos;emmagatzematge e&amp;xternes</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="351"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="198"/>
         <source>Choose what to sync</source>
         <translation>Trieu què sincronitzar</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="150"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="251"/>
         <source>&amp;Local Folder</source>
         <translation>Carpeta &amp;local</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="225"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="285"/>
         <source>pbSelectLocalFolder</source>
         <translation>pbSelectLocalFolder</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="193"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="344"/>
         <source>&amp;Keep local data</source>
         <translation>&amp;Mantén les dades locals</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="243"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="90"/>
         <source>S&amp;ync everything from server</source>
         <translation>Sincronitza-ho tot des del servidor</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="395"/>
+        <location filename="../src/gui/wizard/owncloudadvancedsetuppage.ui" line="402"/>
         <source>Status message</source>
         <translation>Missatge d&apos;estat</translation>
     </message>
@@ -3744,7 +3735,7 @@ No és aconsellada usar-la.</translation>
     </message>
     <message>
         <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="66"/>
-        <source>&lt;a href=&quot;https://docs.nextcloud.com/server/13/admin_manual/installation/index.html#installation&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Host your own server&lt;/span&gt;&lt;/a&gt;</source>
+        <source>&lt;a href=&quot;https://docs.nextcloud.com/server/15/admin_manual/installation/index.html#installation&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Host your own server&lt;/span&gt;&lt;/a&gt;</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3758,22 +3749,17 @@ No és aconsellada usar-la.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="241"/>
-        <source>SlideshowLabel</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="316"/>
+        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="288"/>
         <source>Ser&amp;ver Address</source>
         <translation>Adreça del ser&amp;vidor</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="332"/>
+        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="304"/>
         <source>https://...</source>
         <translation>https://...</translation>
     </message>
     <message>
-        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="367"/>
+        <location filename="../src/gui/wizard/owncloudsetupnocredspage.ui" line="339"/>
         <source>Error Label</source>
         <translation>Etiqueta d&apos;error</translation>
     </message>
@@ -3948,12 +3934,12 @@ No és aconsellada usar-la.</translation>
 <context>
     <name>main.cpp</name>
     <message>
-        <location filename="../src/gui/main.cpp" line="42"/>
+        <location filename="../src/gui/main.cpp" line="39"/>
         <source>System Tray not available</source>
         <translation>La safata del sistema no està disponible</translation>
     </message>
     <message>
-        <location filename="../src/gui/main.cpp" line="43"/>
+        <location filename="../src/gui/main.cpp" line="40"/>
         <source>%1 requires on a working system tray. If you are running XFCE, please follow &lt;a href=&quot;http://docs.xfce.org/xfce/xfce4-panel/systray&quot;&gt;these instructions&lt;/a&gt;. Otherwise, please install a system tray application such as &apos;trayer&apos; and try again.</source>
         <translation>%1 requereix una safata del sistema que funcioni. Si esteu executant XFCE seguiu &lt;a href=&quot;http://docs.xfce.org/xfce/xfce4-panel/systray&quot;&gt;aquestes instruccions&lt;/a&gt;. Altrament, instal·leu una aplicació de safata com &apos;trayer&apos; i intenteu-ho de nou.</translation>
     </message>
