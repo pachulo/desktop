@@ -52,7 +52,6 @@ parts:
       - libqt5webenginecore5
       - libqt5webenginewidgets5
       - libqt5webkit5
-      - libqt5xml5
       - libre2-4
     configflags:
       - -DNO_SHIBBOLETH=1
