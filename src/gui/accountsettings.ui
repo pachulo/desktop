@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="4" column="0">
@@ -187,7 +187,7 @@
       <item row="0" column="2">
        <widget class="QToolButton" name="_accountToolbox">
         <property name="text">
-         <string>...</string>
+         <string notr="true">...</string>
         </property>
        </widget>
       </item>

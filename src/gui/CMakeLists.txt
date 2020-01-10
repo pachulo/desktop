@@ -22,6 +22,7 @@ set(client_UI_SRCS
     generalsettings.ui
     legalnotice.ui
     ignorelisteditor.ui
+    ignorelisttablewidget.ui
     networksettings.ui
     activitywidget.ui
     synclogdialog.ui
@@ -34,6 +35,7 @@ set(client_UI_SRCS
     addcertificatedialog.ui
     proxyauthdialog.ui
     mnemonicdialog.ui
+    wizard/flow2authwidget.ui
     wizard/owncloudadvancedsetuppage.ui
     wizard/owncloudconnectionmethoddialog.ui
     wizard/owncloudhttpcredspage.ui
@@ -59,6 +61,7 @@ set(client_SRCS
     generalsettings.cpp
     legalnotice.cpp
     ignorelisteditor.cpp
+    ignorelisttablewidget.cpp
     lockwatcher.cpp
     logbrowser.cpp
     navigationpanehelper.cpp
@@ -99,10 +102,14 @@ set(client_SRCS
     servernotificationhandler.cpp
     guiutility.cpp
     elidedlabel.cpp
+    headerbanner.cpp
     iconjob.cpp
+    remotewipe.cpp
     creds/credentialsfactory.cpp
     creds/httpcredentialsgui.cpp
     creds/oauth.cpp
+    creds/flow2auth.cpp
+    creds/keychainchunk.cpp
     creds/webflowcredentials.cpp
     creds/webflowcredentialsdialog.cpp
     wizard/postfixlineedit.cpp
@@ -111,6 +118,8 @@ set(client_SRCS
     wizard/owncloudconnectionmethoddialog.cpp
     wizard/owncloudhttpcredspage.cpp
     wizard/owncloudoauthcredspage.cpp
+    wizard/flow2authcredspage.cpp
+    wizard/flow2authwidget.cpp
     wizard/owncloudsetuppage.cpp
     wizard/owncloudwizardcommon.cpp
     wizard/owncloudwizard.cpp
@@ -137,8 +146,6 @@ set(updater_SRCS
 
 IF( APPLE )
     list(APPEND client_SRCS cocoainitializer_mac.mm)
-    list(APPEND client_SRCS settingsdialogmac.cpp)
-    list(REMOVE_ITEM client_SRCS settingsdialog.cpp)
     list(APPEND client_SRCS socketapisocket_mac.mm)
     list(APPEND client_SRCS systray.mm)
 
@@ -167,14 +174,6 @@ set(3rdparty_SRC
     ../3rdparty/qtsingleapplication/qtsinglecoreapplication.cpp
     ../3rdparty/kmessagewidget/kmessagewidget.cpp
    )
-
-if (APPLE)
-    list(APPEND 3rdparty_SRC
-        ../3rdparty/qtmacgoodies/src/macpreferenceswindow.mm
-        ../3rdparty/qtmacgoodies/src/macstandardicon.mm
-        ../3rdparty/qtmacgoodies/src/macwindow.mm
-        )
-endif()
 
 if(NOT WIN32)
    list(APPEND 3rdparty_SRC ../3rdparty/qtlockedfile/qtlockedfile_unix.cpp)
@@ -244,7 +243,7 @@ if(APPLE)
     file(GLOB_RECURSE OWNCLOUD_SIDEBAR_ICONS "${theme_dir}/colored/*-${APPLICATION_ICON_NAME}-sidebar*")
     MESSAGE(STATUS "OWNCLOUD_SIDEBAR_ICONS: ${APPLICATION_ICON_NAME}: ${OWNCLOUD_SIDEBAR_ICONS}")
 endif()
-ecm_add_app_icon(final_src ICONS "${OWNCLOUD_ICONS}" SIDEBAR_ICONS "${OWNCLOUD_SIDEBAR_ICONS}" OUTFILE_BASE "${APPLICATION_ICON_NAME}")
+ecm_add_app_icon(final_src ICONS "${OWNCLOUD_ICONS}" SIDEBAR_ICONS "${OWNCLOUD_SIDEBAR_ICONS}" OUTFILE_BASENAME "${APPLICATION_ICON_NAME}")
 
 if(UNIX AND NOT APPLE)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE")
@@ -266,6 +265,9 @@ if(NOT BUILD_OWNCLOUD_OSX_BUNDLE)
         endforeach(_file)
         install(FILES ${client_I18N} DESTINATION ${SHAREDIR}/${APPLICATION_EXECUTABLE}/i18n)
     else()
+        file(GLOB_RECURSE VISUAL_ELEMENTS "${theme_dir}/colored/*-${APPLICATION_ICON_NAME}-w10startmenu*")
+        install(FILES ${VISUAL_ELEMENTS} DESTINATION bin/visualelements)
+        install(FILES "${theme_dir}/${APPLICATION_EXECUTABLE}.VisualElementsManifest.xml" DESTINATION bin)
         install(FILES ${client_I18N} DESTINATION i18n)
     endif()
 
@@ -328,7 +330,6 @@ ENDIF()
 target_include_directories(${APPLICATION_EXECUTABLE} PRIVATE
     ${CMAKE_SOURCE_DIR}/src/3rdparty/QProgressIndicator
     ${CMAKE_SOURCE_DIR}/src/3rdparty/qtlockedfile
-    ${CMAKE_SOURCE_DIR}/src/3rdparty/qtmacgoodies/src
     ${CMAKE_SOURCE_DIR}/src/3rdparty/qtsingleapplication
     ${CMAKE_SOURCE_DIR}/src/3rdparty/kmessagewidget
     ${CMAKE_CURRENT_BINARY_DIR}
@@ -387,7 +388,7 @@ endif()
 
 if(NOT BUILD_OWNCLOUD_OSX_BUNDLE AND NOT WIN32)
     configure_file(${CMAKE_SOURCE_DIR}/mirall.desktop.in
-                   ${CMAKE_CURRENT_BINARY_DIR}/${APPLICATION_EXECUTABLE}.desktop)
-    install(FILES  ${CMAKE_CURRENT_BINARY_DIR}/${APPLICATION_EXECUTABLE}.desktop DESTINATION ${DATADIR}/applications )
+                   ${CMAKE_CURRENT_BINARY_DIR}/${LINUX_APPLICATION_ID}.desktop)
+    install(FILES  ${CMAKE_CURRENT_BINARY_DIR}/${LINUX_APPLICATION_ID}.desktop DESTINATION ${DATADIR}/applications )
 endif()
 

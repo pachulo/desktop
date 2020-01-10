@@ -15,6 +15,7 @@
  */
 
 #include "activityitemdelegate.h"
+#include "activitylistmodel.h"
 #include "folderstatusmodel.h"
 #include "folderman.h"
 #include "accountstate.h"
@@ -25,6 +26,14 @@
 #include <QFileIconProvider>
 #include <QPainter>
 #include <QApplication>
+
+#define FIXME_USE_HIGH_DPI_RATIO
+#ifdef FIXME_USE_HIGH_DPI_RATIO
+    // FIXME: Find a better way to calculate the text width on high-dpi displays (Retina).
+    #include <QDesktopWidget>
+#endif
+
+#define HASQT5_11 (QT_VERSION >= QT_VERSION_CHECK(5,11,0))
 
 namespace OCC {
 
@@ -37,6 +46,12 @@ int ActivityItemDelegate::_timeWidth = 0;
 int ActivityItemDelegate::_buttonHeight = 0;
 const QString ActivityItemDelegate::_remote_share("remote_share");
 const QString ActivityItemDelegate::_call("call");
+
+ActivityItemDelegate::ActivityItemDelegate()
+    : QStyledItemDelegate()
+{
+    customizeStyle();
+}
 
 int ActivityItemDelegate::iconHeight()
 {
@@ -87,10 +102,26 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     int iconSize = 16;
     int iconOffset = qRound(fm.height() / 4.0 * 7.0);
     int offset = 4;
+    const bool isSelected = (option.state & QStyle::State_Selected);
+#ifdef FIXME_USE_HIGH_DPI_RATIO
+    // FIXME: Find a better way to calculate the text width on high-dpi displays (Retina).
+    const int device_pixel_ration = QApplication::desktop()->devicePixelRatio();
+    int pixel_ratio = (device_pixel_ration > 1 ? device_pixel_ration : 1);
+#endif
 
     // get the data
     Activity::Type activityType = qvariant_cast<Activity::Type>(index.data(ActionRole));
-    QIcon actionIcon = qvariant_cast<QIcon>(index.data(ActionIconRole));
+    QIcon actionIcon;
+    const ActivityListModel::ActionIcon icn = qvariant_cast<ActivityListModel::ActionIcon>(index.data(ActionIconRole));
+    switch(icn.iconType) {
+        case ActivityListModel::ActivityIconType::iconUseCached:        actionIcon = icn.cachedIcon;                                        break;
+        case ActivityListModel::ActivityIconType::iconActivity:         actionIcon = (isSelected ? _iconActivity_sel : _iconActivity);      break;
+        case ActivityListModel::ActivityIconType::iconBell:             actionIcon = (isSelected ? _iconBell_sel : _iconBell);              break;
+        case ActivityListModel::ActivityIconType::iconStateError:       actionIcon = _iconStateError;                                       break;
+        case ActivityListModel::ActivityIconType::iconStateWarning:     actionIcon = _iconStateWarning;                                     break;
+        case ActivityListModel::ActivityIconType::iconStateInfo:        actionIcon = _iconStateInfo;                                        break;
+        case ActivityListModel::ActivityIconType::iconStateSync:        actionIcon = _iconStateSync;                                        break;
+    }
     QString objectType = qvariant_cast<QString>(index.data(ObjectTypeRole));
     QString actionText = qvariant_cast<QString>(index.data(ActionTextRole));
     QString messageText = qvariant_cast<QString>(index.data(MessageRole));
@@ -106,15 +137,27 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
 
     // subject text rect
     QRect actionTextBox = actionIconRect;
+#if (HASQT5_11)
+    int actionTextBoxWidth = fm.horizontalAdvance(actionText);
+#else
     int actionTextBoxWidth = fm.width(actionText);
+#endif
     actionTextBox.setTop(option.rect.top() + margin + offset/2);
     actionTextBox.setHeight(fm.height());
     actionTextBox.setLeft(actionIconRect.right() + margin);
+#ifdef FIXME_USE_HIGH_DPI_RATIO
+    // FIXME: Find a better way to calculate the text width on high-dpi displays (Retina).
+    actionTextBoxWidth *= pixel_ratio;
+#endif
     actionTextBox.setRight(actionTextBox.left() + actionTextBoxWidth + margin);
 
     // message text rect
     QRect messageTextBox = actionTextBox;
+#if (HASQT5_11)
+    int messageTextWidth = fm.horizontalAdvance(messageText);
+#else
     int messageTextWidth = fm.width(messageText);
+#endif
     int messageTextTop = option.rect.top() + fm.height() + margin;
     if(actionText.isEmpty()) messageTextTop = option.rect.top() + margin + offset/2;
     messageTextBox.setTop(messageTextTop);
@@ -128,14 +171,21 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
 
     // time box rect
     QRect timeBox = messageTextBox;
-    QString timeStr = tr("%1").arg(timeText);
-    int timeTextWidth = fm.width(timeStr);
+#if (HASQT5_11)
+    int timeTextWidth = fm.horizontalAdvance(timeText);
+#else
+    int timeTextWidth = fm.width(timeText);
+#endif
     int timeTop = option.rect.top() + fm.height() + fm.height() + margin + offset/2;
     if(messageText.isEmpty() || actionText.isEmpty())
         timeTop = option.rect.top() + fm.height() + margin;
     timeBox.setTop(timeTop);
     timeBox.setHeight(fm.height());
     timeBox.setBottom(timeBox.top() + fm.height());
+#ifdef FIXME_USE_HIGH_DPI_RATIO
+    // FIXME: Find a better way to calculate the text width on high-dpi displays (Retina).
+    timeTextWidth *= pixel_ratio;
+#endif
     timeBox.setRight(timeBox.left() + timeTextWidth + margin);
 
     // buttons - default values
@@ -170,9 +220,9 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     if(activityType == Activity::Type::NotificationType){
 
         // Secondary will be 'Dismiss' or '...' multiple options button
-        secondaryButton.icon = QIcon(QLatin1String(":/client/resources/close.svg"));
+        secondaryButton.icon = (isSelected ? _iconClose_sel : _iconClose);
         if(customList.size() > 1)
-            secondaryButton.icon = QIcon(QLatin1String(":/client/resources/more.svg"));
+            secondaryButton.icon = (isSelected ? _iconMore_sel : _iconMore);
         secondaryButton.iconSize = QSize(iconSize, iconSize);
 
         // Primary button will be 'More Information' or 'Accept'
@@ -180,7 +230,11 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
         if(objectType == _remote_share) primaryButton.text = tr("Accept");
         if(objectType == _call) primaryButton.text = tr("Join");
 
+#if (HASQT5_11)
+        primaryButton.rect.setLeft(left - margin * 2 - fm.horizontalAdvance(primaryButton.text));
+#else
         primaryButton.rect.setLeft(left - margin * 2 - fm.width(primaryButton.text));
+#endif
 
         // save info to be able to filter mouse clicks
         _buttonHeight = buttonSize;
@@ -191,12 +245,17 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     } else if(activityType == Activity::SyncResultType){
 
         // Secondary will be 'open file manager' with the folder icon
-        secondaryButton.icon = QIcon(QLatin1String(":/client/resources/folder.svg"));
+        secondaryButton.icon = _iconFolder;
         secondaryButton.iconSize = QSize(iconSize, iconSize);
 
         // Primary button will be 'open browser'
         primaryButton.text = tr("Open Browser");
+
+#if (HASQT5_11)
+        primaryButton.rect.setLeft(left - margin * 2 - fm.horizontalAdvance(primaryButton.text));
+#else
         primaryButton.rect.setLeft(left - margin * 2 - fm.width(primaryButton.text));
+#endif
 
         // save info to be able to filter mouse clicks
         _buttonHeight = buttonSize;
@@ -207,7 +266,7 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     } else if(activityType == Activity::SyncFileItemType){
 
         // Secondary will be 'open file manager' with the folder icon
-        secondaryButton.icon = QIcon(QLatin1String(":/client/resources/folder.svg"));
+        secondaryButton.icon = _iconFolder;
         secondaryButton.iconSize = QSize(iconSize, iconSize);
 
         // No primary button on this case
@@ -232,7 +291,7 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
         p.setCurrentColorGroup(QPalette::Disabled);
 
     // change pen color if the line is selected
-    if (option.state & QStyle::State_Selected)
+    if (isSelected)
         painter->setPen(p.color(QPalette::HighlightedText));
     else
         painter->setPen(p.color(QPalette::Text));
@@ -246,8 +305,15 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     painter->drawText(actionTextBox, elidedAction);
 
     // draw the buttons
-    if(activityType == Activity::Type::NotificationType || activityType == Activity::Type::SyncResultType)
+    if(activityType == Activity::Type::NotificationType || activityType == Activity::Type::SyncResultType) {
+        primaryButton.palette = p;
+        if (isSelected)
+            primaryButton.palette.setColor(QPalette::ButtonText, p.color(QPalette::HighlightedText));
+        else
+            primaryButton.palette.setColor(QPalette::ButtonText, p.color(QPalette::Text));
+
         QApplication::style()->drawControl(QStyle::CE_PushButton, &primaryButton, painter);
+    }
 
     // Since they are errors on local syncing, there is nothing to do in the server
     if(activityType != Activity::Type::ActivityType)
@@ -261,13 +327,13 @@ void ActivityItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &
     }
 
     // change pen color for the time
-    if (option.state & QStyle::State_Selected)
+    if (isSelected)
         painter->setPen(p.color(QPalette::Disabled, QPalette::HighlightedText));
     else
         painter->setPen(p.color(QPalette::Disabled, QPalette::Text));
 
     // draw the time
-    const QString elidedTime = fm.elidedText(timeStr, Qt::ElideRight, spaceLeftForText);
+    const QString elidedTime = fm.elidedText(timeText, Qt::ElideRight, spaceLeftForText);
     painter->drawText(timeBox, elidedTime);
 
     painter->restore();
@@ -308,6 +374,34 @@ bool ActivityItemDelegate::editorEvent(QEvent *event, QAbstractItemModel *model,
     }
 
     return QStyledItemDelegate::editorEvent(event, model, option, index);
+}
+
+void ActivityItemDelegate::slotStyleChanged()
+{
+    customizeStyle();
+}
+
+void ActivityItemDelegate::customizeStyle()
+{
+    QPalette pal;
+    pal.setColor(QPalette::Base, QColor(0,0,0));    // use dark background colour to invert icons
+
+    _iconClose        = Theme::createColorAwareIcon(QLatin1String(":/client/resources/close.svg"));
+    _iconClose_sel    = Theme::createColorAwareIcon(QLatin1String(":/client/resources/close.svg"), pal);
+    _iconMore         = Theme::createColorAwareIcon(QLatin1String(":/client/resources/more.svg"));
+    _iconMore_sel     = Theme::createColorAwareIcon(QLatin1String(":/client/resources/more.svg"), pal);
+
+    _iconFolder       = QIcon(QLatin1String(":/client/resources/folder.svg"));
+
+    _iconActivity     = Theme::createColorAwareIcon(QLatin1String(":/client/resources/activity.png"));
+    _iconActivity_sel = Theme::createColorAwareIcon(QLatin1String(":/client/resources/activity.png"), pal);
+    _iconBell         = Theme::createColorAwareIcon(QLatin1String(":/client/resources/bell.svg"));
+    _iconBell_sel     = Theme::createColorAwareIcon(QLatin1String(":/client/resources/bell.svg"), pal);
+
+    _iconStateError   = QIcon(QLatin1String(":/client/resources/state-error.svg"));
+    _iconStateWarning = QIcon(QLatin1String(":/client/resources/state-warning.svg"));
+    _iconStateInfo    = QIcon(QLatin1String(":/client/resources/state-info.svg"));
+    _iconStateSync    = QIcon(QLatin1String(":/client/resources/state-sync.svg"));
 }
 
 } // namespace OCC

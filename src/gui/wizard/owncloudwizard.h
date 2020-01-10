@@ -40,6 +40,7 @@ class OwncloudWizardResultPage;
 class AbstractCredentials;
 class AbstractCredentialsWizardPage;
 class WebViewPage;
+class Flow2AuthCredsPage;
 
 /**
  * @brief The OwncloudWizard class
@@ -73,10 +74,13 @@ public:
     void displayError(const QString &, bool retryHTTPonly);
     AbstractCredentials *getCredentials() const;
 
+    void bringToTop();
+
     // FIXME: Can those be local variables?
     // Set from the OwncloudSetupPage, later used from OwncloudHttpCredsPage
     QSslKey _clientSslKey;
     QSslCertificate _clientSslCertificate;
+    QList<QSslCertificate> _clientSslCaCertificates;
 
 public slots:
     void setAuthType(DetermineAuthTypeJob::AuthType type);
@@ -94,8 +98,15 @@ signals:
     void basicSetupFinished(int);
     void skipFolderConfiguration();
     void needCertificate();
+    void styleChanged();
+    void onActivate();
+
+protected:
+    void changeEvent(QEvent *) override;
 
 private:
+    void customizeStyle();
+
     AccountPtr _account;
     OwncloudSetupPage *_setupPage;
     OwncloudHttpCredsPage *_httpCredsPage;
@@ -103,6 +114,7 @@ private:
 #ifndef NO_SHIBBOLETH
     OwncloudShibbolethCredsPage *_shibbolethCredsPage;
 #endif
+    Flow2AuthCredsPage *_flow2CredsPage;
     OwncloudAdvancedSetupPage *_advancedSetupPage;
     OwncloudWizardResultPage *_resultPage;
     AbstractCredentialsWizardPage *_credentialsPage;

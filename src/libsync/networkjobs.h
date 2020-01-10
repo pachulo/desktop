@@ -412,7 +412,8 @@ public:
         Basic, // also the catch-all fallback for backwards compatibility reasons
         OAuth,
         Shibboleth,
-        WebViewFlow
+        WebViewFlow,
+        LoginFlowV2
     };
 
     explicit DetermineAuthTypeJob(AccountPtr account, QObject *parent = nullptr);
@@ -421,13 +422,15 @@ signals:
     void authType(AuthType);
 
 private:
-    void checkBothDone();
+    void checkAllDone();
 
     AccountPtr _account;
     AuthType _resultGet = Basic;
     AuthType _resultPropfind = Basic;
+    AuthType _resultOldFlow = Basic;
     bool _getDone = false;
     bool _propfindDone = false;
+    bool _oldFlowDone = false;
 };
 
 /**

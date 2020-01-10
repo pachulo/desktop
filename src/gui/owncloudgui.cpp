@@ -20,12 +20,7 @@
 #include "progressdispatcher.h"
 #include "owncloudsetupwizard.h"
 #include "sharedialog.h"
-#if defined(Q_OS_MAC)
-#include "settingsdialogmac.h"
-#include "macwindow.h" // qtmacgoodies
-#else
 #include "settingsdialog.h"
-#endif
 #include "logger.h"
 #include "logbrowser.h"
 #include "account.h"
@@ -62,11 +57,7 @@ const char propertyAccountC[] = "oc_account";
 ownCloudGui::ownCloudGui(Application *parent)
     : QObject(parent)
     , _tray(nullptr)
-#if defined(Q_OS_MAC)
-    , _settingsDialog(new SettingsDialogMac(this))
-#else
     , _settingsDialog(new SettingsDialog(this))
-#endif
     , _logBrowser(nullptr)
 #ifdef WITH_LIBCLOUDPROVIDERS
     , _bus(QDBusConnection::sessionBus())
@@ -421,7 +412,7 @@ void ownCloudGui::addAccountContextMenu(AccountStatePtr accountState, QMenu *men
         }
 
         if (accountState->isSignedOut()) {
-            QAction *signin = menu->addAction(tr("Log in..."));
+            QAction *signin = menu->addAction(tr("Log in …"));
             signin->setProperty(propertyAccountC, QVariant::fromValue(accountState));
             connect(signin, &QAction::triggered, this, &ownCloudGui::slotLogin);
         } else {
@@ -675,6 +666,12 @@ void ownCloudGui::updateContextMenu()
 
     _contextMenu->addSeparator();
 
+    if (_navLinksMenu) {
+        _contextMenu->addMenu(_navLinksMenu);
+    }
+
+    _contextMenu->addSeparator();
+
     if (accountList.isEmpty()) {
         _contextMenu->addAction(_actionNewAccountWizard);
     }
@@ -688,6 +685,7 @@ void ownCloudGui::updateContextMenu()
     }
 
     _contextMenu->addSeparator();
+
     if (atLeastOnePaused) {
         QString text;
         if (accountList.count() > 1) {
@@ -777,9 +775,11 @@ void ownCloudGui::setupActions()
 {
     _actionStatus = new QAction(tr("Unknown status"), this);
     _actionStatus->setEnabled(false);
-    _actionSettings = new QAction(tr("Settings..."), this);
-    _actionNewAccountWizard = new QAction(tr("New account..."), this);
-    _actionRecent = new QAction(tr("View more activity..."), this);
+    _navLinksMenu = new QMenu(tr("Apps"));
+    _navLinksMenu->setEnabled(false);
+    _actionSettings = new QAction(tr("Settings …"), this);
+    _actionNewAccountWizard = new QAction(tr("New account …"), this);
+    _actionRecent = new QAction(tr("View more activity …"), this);
     _actionRecent->setEnabled(true);
 
     QObject::connect(_actionRecent, &QAction::triggered, this, &ownCloudGui::slotShowSyncProtocol);
@@ -818,8 +818,11 @@ void ownCloudGui::fetchNavigationApps(AccountStatePtr account){
 
 void ownCloudGui::buildNavigationAppsMenu(AccountStatePtr account, QMenu *accountMenu){
     auto navLinks = _navApps.value(account);
-    if(navLinks.size() > 0){
 
+    _navLinksMenu->clear();
+    _navLinksMenu->setEnabled(navLinks.size() > 0);
+
+    if(navLinks.size() > 0){
         // when there is only one account add the nav links above the settings
         QAction *actionBefore = _actionSettings;
 
@@ -838,17 +841,13 @@ void ownCloudGui::buildNavigationAppsMenu(AccountStatePtr account, QMenu *accoun
         }
 
         // Create submenu with links
-        QMenu *navLinksMenu = new QMenu(tr("Apps"));
-        accountMenu->insertSeparator(actionBefore);
-        accountMenu->insertMenu(actionBefore, navLinksMenu);
         foreach (const QJsonValue &value, navLinks) {
             auto navLink = value.toObject();
             QAction *action = new QAction(navLink.value("name").toString(), this);
             QUrl href(navLink.value("href").toString());
             connect(action, &QAction::triggered, this, [href] { QDesktopServices::openUrl(href); });
-            navLinksMenu->addAction(action);
+            _navLinksMenu->addAction(action);
         }
-        accountMenu->insertSeparator(actionBefore);
     }
 }
 
@@ -935,7 +934,7 @@ void ownCloudGui::slotUpdateProgress(const QString &folder, const ProgressInfo &
         quint64 totalFileCount = qMax(progress.totalFiles(), currentFile);
         QString msg;
         if (progress.trustEta()) {
-            msg = tr("Syncing %1 of %2  (%3 left)")
+            msg = tr("Syncing %1 of %2 (%3 left)")
                       .arg(currentFile)
                       .arg(totalFileCount)
                       .arg(Utility::durationToDescriptiveString2(progress.totalProgress().estimatedEta));
@@ -1069,16 +1068,16 @@ void ownCloudGui::slotShowGuiMessage(const QString &title, const QString &messag
 void ownCloudGui::slotShowSettings()
 {
     if (_settingsDialog.isNull()) {
-        _settingsDialog =
-#if defined(Q_OS_MAC)
-            new SettingsDialogMac(this);
-#else
-            new SettingsDialog(this);
-#endif
+        _settingsDialog = new SettingsDialog(this);
         _settingsDialog->setAttribute(Qt::WA_DeleteOnClose, true);
         _settingsDialog->show();
     }
     raiseDialog(_settingsDialog.data());
+}
+
+void ownCloudGui::slotSettingsDialogActivated()
+{
+    emit isShowingSettingsDialog();
 }
 
 void ownCloudGui::slotShowSyncProtocol()
@@ -1135,10 +1134,6 @@ void ownCloudGui::raiseDialog(QWidget *raiseWidget)
         raiseWidget->raise();
         raiseWidget->activateWindow();
 
-#if defined(Q_OS_MAC)
-        // viel hilft viel ;-)
-        MacWindow::bringToFront(raiseWidget);
-#endif
 #if defined(Q_OS_X11)
         WId wid = widget->winId();
         NETWM::init();

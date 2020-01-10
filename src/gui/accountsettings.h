@@ -63,11 +63,14 @@ signals:
     void openFolderAlias(const QString &);
     void showIssuesList(AccountState *account);
     void requesetMnemonic();
+    void removeAccountFolders(AccountState *account);
+    void styleChanged();
 
 public slots:
     void slotOpenOC();
     void slotUpdateQuota(qint64, qint64);
     void slotAccountStateChanged();
+    void slotStyleChanged();
 
     AccountState *accountsState() { return _accountState; }
 
@@ -80,6 +83,8 @@ protected slots:
     void slotRemoveCurrentFolder();
     void slotOpenCurrentFolder(); // sync folder
     void slotOpenCurrentLocalSubFolder(); // selected subfolder in sync folder
+    void slotEditCurrentIgnoredFiles();
+    void slotEditCurrentLocalIgnoredFiles();
     void slotFolderWizardAccepted();
     void slotFolderWizardRejected();
     void slotDeleteAccount();
@@ -87,7 +92,7 @@ protected slots:
     void slotOpenAccountWizard();
     void slotAccountAdded(AccountState *);
     void refreshSelectiveSyncStatus();
-    void slotMarkSubfolderEncrpted(const FolderStatusModel::SubFolderInfo* folderInfo);
+    void slotMarkSubfolderEncrypted(const FolderStatusModel::SubFolderInfo* folderInfo);
     void slotMarkSubfolderDecrypted(const FolderStatusModel::SubFolderInfo* folderInfo);
     void slotSubfolderContextMenuRequested(const QModelIndex& idx, const QPoint& point);
     void slotCustomContextMenuRequested(const QPoint &);
@@ -110,7 +115,7 @@ protected slots:
     void slotUploadMetadataSuccess(const QByteArray& folderId);
     void slotUpdateMetadataError(const QByteArray& folderId, int httpReturnCode);
 
-    // Remove Encryotion Bit.
+    // Remove Encryption Bit.
     void slotLockForDecryptionSuccess(const QByteArray& folderId, const QByteArray& token);
     void slotLockForDecryptionError(const QByteArray& folderId, int httpReturnCode);
     void slotDeleteMetadataSuccess(const QByteArray& folderId);
@@ -125,11 +130,13 @@ private:
         QStringList errors = QStringList());
     bool event(QEvent *) override;
     void createAccountToolbox();
+    void openIgnoredFilesDialog(const QString & absFolderPath);
+    void customizeStyle();
 
     /// Returns the alias of the selected folder, empty string if none
     QString selectedFolderAlias() const;
 
-    Ui::AccountSettings *ui;
+    Ui::AccountSettings *_ui;
 
     FolderStatusModel *_model;
     QUrl _OCUrl;

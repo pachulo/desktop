@@ -26,6 +26,7 @@
 #include "updater/updater.h"
 #include "updater/ocupdater.h"
 #include "ignorelisteditor.h"
+#include "common/utility.h"
 
 #include "config.h"
 
@@ -34,6 +35,12 @@
 #include <QNetworkProxy>
 #include <QDir>
 #include <QScopedValueRollback>
+
+#define QTLEGACY (QT_VERSION < QT_VERSION_CHECK(5,9,0))
+
+#if !(QTLEGACY)
+#include <QOperatingSystemVersion>
+#endif
 
 namespace OCC {
 
@@ -50,6 +57,13 @@ GeneralSettings::GeneralSettings(QWidget *parent)
 
     connect(_ui->showInExplorerNavigationPaneCheckBox, &QAbstractButton::toggled, this, &GeneralSettings::slotShowInExplorerNavigationPane);
 
+    // Rename 'Explorer' appropriately on non-Windows
+#ifdef Q_OS_MAC
+    QString txt = _ui->showInExplorerNavigationPaneCheckBox->text();
+    txt.replace(QString::fromLatin1("Explorer"), QString::fromLatin1("Finder"));
+    _ui->showInExplorerNavigationPaneCheckBox->setText(txt);
+#endif
+
     _ui->autostartCheckBox->setChecked(Utility::hasLaunchOnStartup(Theme::instance()->appName()));
     connect(_ui->autostartCheckBox, &QAbstractButton::toggled, this, &GeneralSettings::slotToggleLaunchOnStartup);
 
@@ -63,7 +77,8 @@ GeneralSettings::GeneralSettings(QWidget *parent)
     connect(_ui->legalNoticeButton, &QPushButton::clicked, this, &GeneralSettings::slotShowLegalNotice);
 
     loadMiscSettings();
-    slotUpdateInfo();
+    // updater info now set in: customizeStyle
+    //slotUpdateInfo();
 
     // misc
     connect(_ui->monoIconsCheckBox, &QAbstractButton::toggled, this, &GeneralSettings::saveMiscSettings);
@@ -79,9 +94,13 @@ GeneralSettings::GeneralSettings(QWidget *parent)
     // Hide on non-Windows, or WindowsVersion < 10.
     // The condition should match the default value of ConfigFile::showInExplorerNavigationPane.
 #ifdef Q_OS_WIN
-    if (QSysInfo::windowsVersion() < QSysInfo::WV_WINDOWS10)
+    #if QTLEGACY
+        if (QSysInfo::windowsVersion() < QSysInfo::WV_WINDOWS10)
+    #else
+        if (QOperatingSystemVersion::current() < QOperatingSystemVersion::Windows10)
+    #endif
+            _ui->showInExplorerNavigationPaneCheckBox->setVisible(false);
 #endif
-        _ui->showInExplorerNavigationPaneCheckBox->setVisible(false);
 
     /* Set the left contents margin of the layout to zero to make the checkboxes
      * align properly vertically , fixes bug #3758
@@ -98,6 +117,8 @@ GeneralSettings::GeneralSettings(QWidget *parent)
 
     // accountAdded means the wizard was finished and the wizard might change some options.
     connect(AccountManager::instance(), &AccountManager::accountAdded, this, &GeneralSettings::loadMiscSettings);
+
+    customizeStyle();
 }
 
 GeneralSettings::~GeneralSettings()
@@ -138,7 +159,11 @@ void GeneralSettings::slotUpdateInfo()
         connect(updater, &OCUpdater::downloadStateChanged, this, &GeneralSettings::slotUpdateInfo, Qt::UniqueConnection);
         connect(_ui->restartButton, &QAbstractButton::clicked, updater, &OCUpdater::slotStartInstaller, Qt::UniqueConnection);
         connect(_ui->restartButton, &QAbstractButton::clicked, qApp, &QApplication::quit, Qt::UniqueConnection);
-        _ui->updateStateLabel->setText(updater->statusString());
+
+        QString status = updater->statusString();
+        Theme::replaceLinkColorStringBackgroundAware(status);
+        _ui->updateStateLabel->setText(status);
+
         _ui->restartButton->setVisible(updater->downloadState() == OCUpdater::DownloadComplete);
     } else {
         // can't have those infos from sparkle currently
@@ -184,6 +209,7 @@ void GeneralSettings::slotShowInExplorerNavigationPane(bool checked)
 void GeneralSettings::slotIgnoreFilesEditor()
 {
     if (_ignoreEditor.isNull()) {
+        ConfigFile cfgFile;
         _ignoreEditor = new IgnoreListEditor(this);
         _ignoreEditor->setAttribute(Qt::WA_DeleteOnClose, true);
         _ignoreEditor->open();
@@ -197,6 +223,22 @@ void GeneralSettings::slotShowLegalNotice()
     auto notice = new LegalNotice();
     notice->exec();
     delete notice;
+}
+
+void GeneralSettings::slotStyleChanged()
+{
+    customizeStyle();
+}
+
+void GeneralSettings::customizeStyle()
+{
+    // setup about section
+    QString about = Theme::instance()->about();
+    Theme::replaceLinkColorStringBackgroundAware(about);
+    _ui->aboutLabel->setText(about);
+
+    // updater info
+    slotUpdateInfo();
 }
 
 } // namespace OCC

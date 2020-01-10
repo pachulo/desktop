@@ -26,7 +26,6 @@ class FolderStatusDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    QIcon m_moreIcon;
     FolderStatusDelegate();
 
     enum datarole { FolderAliasRole = Qt::UserRole + 100,
@@ -44,6 +43,7 @@ public:
         SyncProgressItemString,
         WarningCount,
         SyncRunning,
+        SyncDate,
 
         AddButton // 1 = enabled; 2 = disabled
     };
@@ -61,9 +61,16 @@ public:
     static QRect errorsListRect(QRect within);
     static int rootFolderHeightWithoutErrors(const QFontMetrics &fm, const QFontMetrics &aliasFm);
 
+public slots:
+    void slotStyleChanged();
+
 private:
+    void customizeStyle();
+
     static QString addFolderText();
     QPersistentModelIndex _pressedIndex;
+
+    QIcon _iconMore;
 };
 
 } // namespace OCC

@@ -49,6 +49,7 @@
 #include <QLocalSocket>
 #include <QStringBuilder>
 #include <QMessageBox>
+#include <QInputDialog>
 
 #include <QClipboard>
 
@@ -477,6 +478,8 @@ public:
             this, &GetOrCreatePublicLinkShare::linkShareCreated);
         connect(&_shareManager, &ShareManager::serverError,
             this, &GetOrCreatePublicLinkShare::serverError);
+        connect(&_shareManager, &ShareManager::linkShareRequiresPassword,
+            this, &GetOrCreatePublicLinkShare::passwordRequired);
     }
 
     void run()
@@ -510,6 +513,24 @@ private slots:
     {
         qCDebug(lcPublicLink) << "New share created";
         success(share->getLink().toString());
+    }
+
+    void passwordRequired() {
+        bool ok;
+        QString password = QInputDialog::getText(nullptr,
+                                                 tr("Password for share required"),
+                                                 tr("Please enter a password for your link share:"),
+                                                 QLineEdit::Normal,
+                                                 QString(),
+                                                 &ok);
+
+        if (!ok) {
+            // The dialog was canceled so no need to do anything
+            return;
+        }
+
+        // Try to create the link share again with the newly entered password
+        _shareManager.createLinkShare(_localFile, QString(), password);
     }
 
     void serverError(int code, const QString &message)
@@ -622,13 +643,13 @@ void OCC::SocketApi::openPrivateLink(const QString &link)
 void SocketApi::command_GET_STRINGS(const QString &argument, SocketListener *listener)
 {
     static std::array<std::pair<const char *, QString>, 5> strings { {
-        { "SHARE_MENU_TITLE", tr("Share...") },
-        { "CONTEXT_MENU_TITLE", Theme::instance()->appNameGUI() },
+        { "SHARE_MENU_TITLE", tr("Share options") },
+        { "CONTEXT_MENU_TITLE", tr("Share via %1").arg(Theme::instance()->appNameGUI())},
         { "COPY_PRIVATE_LINK_MENU_TITLE", tr("Copy private link to clipboard") },
-        { "EMAIL_PRIVATE_LINK_MENU_TITLE", tr("Send private link by email...") },
+        { "EMAIL_PRIVATE_LINK_MENU_TITLE", tr("Send private link by email …") },
     } };
     listener->sendMessage(QString("GET_STRINGS:BEGIN"));
-    for (auto key_value : strings) {
+    for (const auto& key_value : strings) {
         if (argument.isEmpty() || argument == QLatin1String(key_value.first)) {
             listener->sendMessage(QString("STRING:%1:%2").arg(key_value.first, key_value.second));
         }
@@ -652,7 +673,7 @@ void SocketApi::sendSharingContextMenuOptions(const FileData &fileData, SocketLi
     if (isOnTheServer && !record._remotePerm.isNull() && !record._remotePerm.hasPermission(RemotePermissions::CanReshare)) {
         listener->sendMessage(QLatin1String("MENU_ITEM:DISABLED:d:") + tr("Resharing this file is not allowed"));
     } else {
-        listener->sendMessage(QLatin1String("MENU_ITEM:SHARE") + flagString + tr("Share..."));
+        listener->sendMessage(QLatin1String("MENU_ITEM:SHARE") + flagString + tr("Share options"));
 
         // Do we have public links?
         bool publicLinksEnabled = theme->linkSharing() && capabilities.sharePublicLink();
@@ -663,17 +684,17 @@ void SocketApi::sendSharingContextMenuOptions(const FileData &fileData, SocketLi
             && !capabilities.sharePublicLinkEnforcePassword();
 
         if (canCreateDefaultPublicLink) {
-            listener->sendMessage(QLatin1String("MENU_ITEM:COPY_PUBLIC_LINK") + flagString + tr("Copy public link to clipboard"));
+            listener->sendMessage(QLatin1String("MENU_ITEM:COPY_PUBLIC_LINK") + flagString + tr("Copy public link"));
         } else if (publicLinksEnabled) {
-            listener->sendMessage(QLatin1String("MENU_ITEM:MANAGE_PUBLIC_LINKS") + flagString + tr("Copy public link to clipboard"));
+            listener->sendMessage(QLatin1String("MENU_ITEM:MANAGE_PUBLIC_LINKS") + flagString + tr("Copy public link"));
         }
     }
 
-    listener->sendMessage(QLatin1String("MENU_ITEM:COPY_PRIVATE_LINK") + flagString + tr("Copy private link to clipboard"));
+    listener->sendMessage(QLatin1String("MENU_ITEM:COPY_PRIVATE_LINK") + flagString + tr("Copy internal link"));
 
     // Disabled: only providing email option for private links would look odd,
     // and the copy option is more general.
-    //listener->sendMessage(QLatin1String("MENU_ITEM:EMAIL_PRIVATE_LINK") + flagString + tr("Send private link by email..."));
+    //listener->sendMessage(QLatin1String("MENU_ITEM:EMAIL_PRIVATE_LINK") + flagString + tr("Send private link by email …"));
 }
 
 SocketApi::FileData SocketApi::FileData::get(const QString &localFile)

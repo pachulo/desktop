@@ -203,13 +203,27 @@ if( WIN32 )
 add_definitions( -D__USE_MINGW_ANSI_STDIO=1 )
 add_definitions( -DNOMINMAX )
 # Get APIs from from Vista onwards.
-add_definitions( -D_WIN32_WINNT=0x0600)
-add_definitions( -DWINVER=0x0600)
+add_definitions( -D_WIN32_WINNT=0x0601 )
+add_definitions( -DWINVER=0x0601 )
+    if( MSVC )
+    # Use automatic overload for suitable CRT safe-functions
+    # See https://docs.microsoft.com/de-de/cpp/c-runtime-library/security-features-in-the-crt?view=vs-2019
+    add_definitions( -D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1 )
+    # Also: Disable compiler warnings because we don't use Windows CRT safe-functions explicitly and don't intend to
+    # as this is a pure cross-platform source the only alternative would be a ton of ifdefs with calls to the _s version
+    add_definitions( -D_CRT_SECURE_NO_WARNINGS )
+    endif( MSVC )
 endif( WIN32 )
 
 if (APPLE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
 endif()
+
+option(SANITIZE_ADDRESS "Enable address sanitizer in tests" OFF)
+if (SANITIZE_ADDRESS)
+    include(SanitizerFlags)
+    enable_sanitizer()
+endif ()
 
 # Handle Translations, pick all client_* files from trans directory.
 file( GLOB TRANS_FILES ${CMAKE_SOURCE_DIR}/translations/client_*.ts)

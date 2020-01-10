@@ -28,6 +28,7 @@
 
 #include <QFileInfo>
 #include <QFileIconProvider>
+#include <QInputDialog>
 #include <QPointer>
 #include <QPushButton>
 #include <QFrame>
@@ -137,6 +138,7 @@ ShareDialog::ShareDialog(QPointer<AccountState> accountState,
         _manager = new ShareManager(accountState->account(), this);
         connect(_manager, &ShareManager::sharesFetched, this, &ShareDialog::slotSharesFetched);
         connect(_manager, &ShareManager::linkShareCreated, this, &ShareDialog::slotAddLinkShareWidget);
+        connect(_manager, &ShareManager::linkShareRequiresPassword, this, &ShareDialog::slotLinkShareRequiresPassword);
     }
 }
 
@@ -156,6 +158,9 @@ void ShareDialog::addLinkShareWidget(const QSharedPointer<LinkShare> &linkShare)
     connect(_linkWidgetList.at(index), &ShareLinkWidget::deleteLinkShare, this, &ShareDialog::slotDeleteShare);
     //connect(_linkWidgetList.at(index), &ShareLinkWidget::resizeRequested, this, &ShareDialog::slotAdjustScrollWidgetSize);
 
+    // Connect styleChanged events to our widget, so it can adapt (Dark-/Light-Mode switching)
+    connect(this, &ShareDialog::styleChanged, _linkWidgetList.at(index), &ShareLinkWidget::slotStyleChanged);
+
     _ui->verticalLayout->insertWidget(_linkWidgetList.size()+1, _linkWidgetList.at(index));
     _linkWidgetList.at(index)->setupUiOptions();
 }
@@ -165,7 +170,7 @@ void ShareDialog::initLinkShareWidget(){
         _emptyShareLinkWidget = new ShareLinkWidget(_accountState->account(), _sharePath, _localPath, _maxSharingPermissions, this);
         _linkWidgetList.append(_emptyShareLinkWidget);
 
-//        connect(_emptyShareLinkWidget, &ShareLinkWidget::resizeRequested, this, &ShareDialog::slotAdjustScrollWidgetSize);
+        connect(_emptyShareLinkWidget, &ShareLinkWidget::resizeRequested, this, &ShareDialog::slotAdjustScrollWidgetSize);
 //        connect(this, &ShareDialog::toggleAnimation, _emptyShareLinkWidget, &ShareLinkWidget::slotToggleAnimation);
         connect(_emptyShareLinkWidget, &ShareLinkWidget::createLinkShare, this, &ShareDialog::slotCreateLinkShare);
 
@@ -206,7 +211,6 @@ void ShareDialog::slotSharesFetched(const QList<QSharedPointer<Share>> &shares)
     emit toggleAnimation(false);
 }
 
-// TODO
 void ShareDialog::slotAdjustScrollWidgetSize()
 {
     int count = this->findChildren<ShareLinkWidget *>().count();
@@ -282,6 +286,10 @@ void ShareDialog::showSharingUi()
 
     if (userGroupSharing) {
         _userGroupWidget = new ShareUserGroupWidget(_accountState->account(), _sharePath, _localPath, _maxSharingPermissions, _privateLinkUrl, this);
+
+        // Connect styleChanged events to our widget, so it can adapt (Dark-/Light-Mode switching)
+        connect(this, &ShareDialog::styleChanged, _userGroupWidget, &ShareUserGroupWidget::slotStyleChanged);
+
         _ui->verticalLayout->insertWidget(1, _userGroupWidget);
         _userGroupWidget->getShares();
     }
@@ -296,6 +304,24 @@ void ShareDialog::slotCreateLinkShare()
     _manager->createLinkShare(_sharePath, QString(), QString());
 }
 
+void ShareDialog::slotLinkShareRequiresPassword()
+{
+    bool ok;
+    QString password = QInputDialog::getText(this,
+                                             tr("Password for share required"),
+                                             tr("Please enter a password for your link share:"),
+                                             QLineEdit::Normal,
+                                             QString(),
+                                             &ok);
+
+    if (!ok) {
+        // The dialog was canceled so no need to do anything
+        return;
+    }
+
+    // Try to create the link share again with the newly entered password
+    _manager->createLinkShare(_sharePath, QString(), password);
+}
 
 void ShareDialog::slotDeleteShare()
 {
@@ -335,4 +361,21 @@ void ShareDialog::slotAccountStateChanged(int state)
         }
     }
 }
+
+void ShareDialog::changeEvent(QEvent *e)
+{
+    switch (e->type()) {
+    case QEvent::StyleChange:
+    case QEvent::PaletteChange:
+    case QEvent::ThemeChange:
+        // Notify the other widgets (Dark-/Light-Mode switching)
+        emit styleChanged();
+        break;
+    default:
+        break;
+    }
+
+    QDialog::changeEvent(e);
+}
+
 }

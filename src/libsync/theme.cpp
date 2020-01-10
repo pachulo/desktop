@@ -83,7 +83,7 @@ QString Theme::statusHeaderText(SyncResult::Status status) const
         resultStr = QCoreApplication::translate("theme", "Preparing to sync");
         break;
     case SyncResult::SyncAbortRequested:
-        resultStr = QCoreApplication::translate("theme", "Aborting...");
+        resultStr = QCoreApplication::translate("theme", "Aborting …");
         break;
     case SyncResult::Paused:
         resultStr = QCoreApplication::translate("theme", "Sync is paused");
@@ -175,6 +175,14 @@ QIcon Theme::themeIcon(const QString &name, bool sysTray, bool sysTrayMenuVisibl
 #endif
 
     return cached;
+}
+
+QIcon Theme::uiThemeIcon(const QString &iconName, bool uiHasDarkBg) const
+{
+    QString themeResBasePath = ":/client/theme/";
+    QString iconPath = themeResBasePath + (uiHasDarkBg?"white/":"black/") + iconName;
+    std::string icnPath = iconPath.toUtf8().constData();
+    return QIcon(QPixmap(iconPath));
 }
 
 QString Theme::hidpiFileName(const QString &fileName, QPaintDevice *dev)
@@ -341,10 +349,9 @@ QString Theme::gitSHA1() const
 QString Theme::about() const
 {
     QString devString;
-    devString = tr("<p>Version %1. For more information please visit <a href='%2'>%3</a>.</p>")
+    devString = tr("<p>Version %1. For more information please click <a href='%2'>here</a>.</p>")
               .arg(MIRALL_VERSION_STRING)
-              .arg("http://" MIRALL_STRINGIFY(APPLICATION_DOMAIN))
-              .arg(MIRALL_STRINGIFY(APPLICATION_DOMAIN));
+              .arg(helpUrl());
 
     devString += tr("<p>This release was supplied by %1</p>")
               .arg(APPLICATION_VENDOR);
@@ -556,6 +563,83 @@ QString Theme::versionSwitchOutput() const
     stream << "Using Qt " << qVersion() << ", built against Qt " << QT_VERSION_STR << endl;
     stream << "Using '" << QSslSocket::sslLibraryVersionString() << "'" << endl;
     return helpText;
+}
+
+bool Theme::isDarkColor(const QColor &color)
+{
+    // account for different sensitivity of the human eye to certain colors
+    double treshold = 1.0 - (0.299 * color.red() + 0.587 * color.green() + 0.114 * color.blue()) / 255.0;
+    return treshold > 0.5;
+}
+
+QColor Theme::getBackgroundAwareLinkColor(const QColor &backgroundColor)
+{
+    return QColor((isDarkColor(backgroundColor) ? QColor("#6193dc") : QGuiApplication::palette().color(QPalette::Link)));
+}
+
+QColor Theme::getBackgroundAwareLinkColor()
+{
+    return getBackgroundAwareLinkColor(QGuiApplication::palette().base().color());
+}
+
+void Theme::replaceLinkColorStringBackgroundAware(QString &linkString, const QColor &backgroundColor)
+{
+    replaceLinkColorString(linkString, getBackgroundAwareLinkColor(backgroundColor));
+}
+
+void Theme::replaceLinkColorStringBackgroundAware(QString &linkString)
+{
+    replaceLinkColorStringBackgroundAware(linkString, QGuiApplication::palette().color(QPalette::Base));
+}
+
+void Theme::replaceLinkColorString(QString &linkString, const QColor &newColor)
+{
+    linkString.replace(QRegularExpression("(<a href|<a style='color:#([a-zA-Z0-9]{6});' href)"), QString::fromLatin1("<a style='color:%1;' href").arg(newColor.name()));
+}
+
+QIcon Theme::createColorAwareIcon(const QString &name, const QPalette &palette)
+{
+    QImage img(name);
+    QImage inverted(img);
+    inverted.invertPixels(QImage::InvertRgb);
+
+    QIcon icon;
+    if (Theme::isDarkColor(palette.color(QPalette::Base))) {
+        icon.addPixmap(QPixmap::fromImage(inverted));
+    } else {
+        icon.addPixmap(QPixmap::fromImage(img));
+    }
+    if (Theme::isDarkColor(palette.color(QPalette::HighlightedText))) {
+        icon.addPixmap(QPixmap::fromImage(img), QIcon::Normal, QIcon::On);
+    } else {
+        icon.addPixmap(QPixmap::fromImage(inverted), QIcon::Normal, QIcon::On);
+    }
+    return icon;
+}
+
+QIcon Theme::createColorAwareIcon(const QString &name)
+{
+    return createColorAwareIcon(name, QGuiApplication::palette());
+}
+
+QPixmap Theme::createColorAwarePixmap(const QString &name, const QPalette &palette)
+{
+    QImage img(name);
+    QImage inverted(img);
+    inverted.invertPixels(QImage::InvertRgb);
+
+    QPixmap pixmap;
+    if (Theme::isDarkColor(palette.color(QPalette::Base))) {
+        pixmap = QPixmap::fromImage(inverted);
+    } else {
+        pixmap = QPixmap::fromImage(img);
+    }
+    return pixmap;
+}
+
+QPixmap Theme::createColorAwarePixmap(const QString &name)
+{
+    return createColorAwarePixmap(name, QGuiApplication::palette());
 }
 
 } // end namespace client

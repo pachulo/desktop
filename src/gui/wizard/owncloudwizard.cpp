@@ -16,6 +16,7 @@
 #include "account.h"
 #include "configfile.h"
 #include "theme.h"
+#include "owncloudgui.h"
 
 #include "wizard/owncloudwizard.h"
 #include "wizard/owncloudsetuppage.h"
@@ -27,6 +28,7 @@
 #include "wizard/owncloudadvancedsetuppage.h"
 #include "wizard/owncloudwizardresultpage.h"
 #include "wizard/webviewpage.h"
+#include "wizard/flow2authcredspage.h"
 
 #include "QProgressIndicator.h"
 
@@ -45,6 +47,7 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     , _setupPage(new OwncloudSetupPage(this))
     , _httpCredsPage(new OwncloudHttpCredsPage(this))
     , _browserCredsPage(new OwncloudOAuthCredsPage)
+    , _flow2CredsPage(new Flow2AuthCredsPage)
 #ifndef NO_SHIBBOLETH
     , _shibbolethCredsPage(new OwncloudShibbolethCredsPage)
 #endif
@@ -59,6 +62,7 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     setPage(WizardCommon::Page_ServerSetup, _setupPage);
     setPage(WizardCommon::Page_HttpCreds, _httpCredsPage);
     setPage(WizardCommon::Page_OAuthCreds, _browserCredsPage);
+    setPage(WizardCommon::Page_Flow2AuthCreds, _flow2CredsPage);
 #ifndef NO_SHIBBOLETH
     setPage(WizardCommon::Page_ShibbolethCreds, _shibbolethCredsPage);
 #endif
@@ -76,6 +80,7 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     connect(_setupPage, &OwncloudSetupPage::determineAuthType, this, &OwncloudWizard::determineAuthType);
     connect(_httpCredsPage, &OwncloudHttpCredsPage::connectToOCUrl, this, &OwncloudWizard::connectToOCUrl);
     connect(_browserCredsPage, &OwncloudOAuthCredsPage::connectToOCUrl, this, &OwncloudWizard::connectToOCUrl);
+    connect(_flow2CredsPage, &Flow2AuthCredsPage::connectToOCUrl, this, &OwncloudWizard::connectToOCUrl);
 #ifndef NO_SHIBBOLETH
     connect(_shibbolethCredsPage, &OwncloudShibbolethCredsPage::connectToOCUrl, this, &OwncloudWizard::connectToOCUrl);
 #endif
@@ -96,6 +101,17 @@ OwncloudWizard::OwncloudWizard(QWidget *parent)
     setTitleFormat(Qt::RichText);
     setSubTitleFormat(Qt::RichText);
     setButtonText(QWizard::CustomButton1, tr("Skip folders configuration"));
+
+
+    // Connect styleChanged events to our widgets, so they can adapt (Dark-/Light-Mode switching)
+    connect(this, &OwncloudWizard::styleChanged, _setupPage, &OwncloudSetupPage::slotStyleChanged);
+    connect(this, &OwncloudWizard::styleChanged, _advancedSetupPage, &OwncloudAdvancedSetupPage::slotStyleChanged);
+    connect(this, &OwncloudWizard::styleChanged, _flow2CredsPage, &Flow2AuthCredsPage::slotStyleChanged);
+
+    customizeStyle();
+
+    // allow Flow2 page to poll on window activation
+    connect(this, &OwncloudWizard::onActivate, _flow2CredsPage, &Flow2AuthCredsPage::slotPollNow);
 }
 
 void OwncloudWizard::setAccount(AccountPtr account)
@@ -129,11 +145,13 @@ QString OwncloudWizard::ocUrl() const
     return url;
 }
 
-bool OwncloudWizard::registration() {
+bool OwncloudWizard::registration()
+{
     return _registration;
 }
 
-void OwncloudWizard::setRegistration(bool registration) {
+void OwncloudWizard::setRegistration(bool registration)
+{
     _registration = registration;
 }
 
@@ -160,6 +178,10 @@ void OwncloudWizard::successfulStep()
 
     case WizardCommon::Page_OAuthCreds:
         _browserCredsPage->setConnected();
+        break;
+
+    case WizardCommon::Page_Flow2AuthCreds:
+        _flow2CredsPage->setConnected();
         break;
 
 #ifndef NO_SHIBBOLETH
@@ -195,6 +217,8 @@ void OwncloudWizard::setAuthType(DetermineAuthTypeJob::AuthType type)
 #endif
         if (type == DetermineAuthTypeJob::OAuth) {
         _credentialsPage = _browserCredsPage;
+    } else if (type == DetermineAuthTypeJob::LoginFlowV2) {
+        _credentialsPage = _flow2CredsPage;
     } else if (type == DetermineAuthTypeJob::WebViewFlow) {
         _credentialsPage = _webViewPage;
     } else { // try Basic auth even for "Unknown"
@@ -221,7 +245,7 @@ void OwncloudWizard::slotCurrentPageChanged(int id)
     }
 
     setOption(QWizard::HaveCustomButton1, id == WizardCommon::Page_AdvancedSetup);
-    if (id == WizardCommon::Page_AdvancedSetup && _credentialsPage == _browserCredsPage) {
+    if (id == WizardCommon::Page_AdvancedSetup && (_credentialsPage == _browserCredsPage || _credentialsPage == _flow2CredsPage)) {
         // For OAuth, disable the back button in the Page_AdvancedSetup because we don't want
         // to re-open the browser.
         button(QWizard::BackButton)->setEnabled(false);
@@ -263,6 +287,39 @@ AbstractCredentials *OwncloudWizard::getCredentials() const
     }
 
     return nullptr;
+}
+
+void OwncloudWizard::changeEvent(QEvent *e)
+{
+    switch (e->type()) {
+    case QEvent::StyleChange:
+    case QEvent::PaletteChange:
+    case QEvent::ThemeChange:
+        customizeStyle();
+
+        // Notify the other widgets (Dark-/Light-Mode switching)
+        emit styleChanged();
+        break;
+    case QEvent::ActivationChange:
+        if(isActiveWindow())
+            emit onActivate();
+        break;
+    default:
+        break;
+    }
+
+    QWizard::changeEvent(e);
+}
+
+void OwncloudWizard::customizeStyle()
+{
+    // HINT: Customize wizard's own style here, if necessary in the future (Dark-/Light-Mode switching)
+}
+
+void OwncloudWizard::bringToTop()
+{
+    // bring wizard to top
+    ownCloudGui::raiseDialog(this);
 }
 
 } // end namespace
